@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: we are anonymous
 subtitle: ''
 description: ''
 keywords:
@@ -98,4 +98,6 @@ theme: hexo-theme-wixo
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: ''
+  type: 'git'
+  repo: https://github.com/YUbuntu0109/anonymous.git
+  branch: master
