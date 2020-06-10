@@ -4,6 +4,7 @@ date: 2020-6-10 12:00:00
 tags: [Exploit Windows]
 ---
 
+> *github repo : https://github.com/tiagorlampert/sAINT*
 
 # `README.md`
 
@@ -166,3 +167,13 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+# `Teching Video`
+
+> *How to use it : https://youtu.be/9Ny4GAo5DdI*
+
+
+# `Frequent Issues`
+
+> *Email not recieve : https://github.com/tiagorlampert/sAINT/issues/22*
