@@ -1,7 +1,7 @@
 ---
 title: 'ezsploit : linux bash script automation for metasploit'
 date: 2020-06-10 18:26:08
-tags: [[Exploit Android,Exploit Windows,Exploit Linux,Exploit Mac OS,Hacking Tool]
+tags: [Exploit Android,Exploit Windows,Exploit Linux,Exploit Mac OS,Hacking Tool]
 ---
 
 
