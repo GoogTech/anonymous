@@ -1,11 +1,12 @@
 ---
 title: (s)AINT is a Spyware Generator for Windows systems written in Java
-date: 2019-11-01 18:21:08
+date: 2020-6-10 12:00:00
 tags: [Exploit Windows]
 ---
 
 
-# README.md
+# `README.md`
+
 ----------------------------------------------------------------------------------------------
 ## Discontinued
 
