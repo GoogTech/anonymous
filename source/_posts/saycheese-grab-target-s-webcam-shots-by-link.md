@@ -1,7 +1,7 @@
 ---
 title: 'saycheese : grab target''s webcam shots by link'
 date: 2020-06-10 15:09:22
-tags: [Exploit Android]
+tags: [Exploit Android,Hacking Tool]
 ---
 
 
