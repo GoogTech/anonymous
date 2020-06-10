@@ -12,4 +12,4 @@
 </a>
 </p>
 
-<p align="center">< THE QUIETER YOU ARE THE MORE YOU ARE ABLE TO HEAR /><p>
+<p style="font-size: 25px;text-align: center;font-family: "lucida console";">< THE QUIETER YOU ARE THE MORE YOU ARE ABLE TO HEAR /><p>
