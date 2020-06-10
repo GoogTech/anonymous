@@ -8,7 +8,6 @@ node_js: stable
 # S: Build Lifecycle
 install:
   - npm install hexo-cli -g
-  - npm install hexo-generator-cname --save #avoid the CNAME is invalid after updated blog
   - npm install
 
 # before_script:
