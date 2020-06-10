@@ -1,6 +1,8 @@
 ---
-title: 'CamPhish : grab cam shots from target's phone front camera or PC webcam just sending a link'
-date: 2020-06-10 15:11:40
+title: >-
+  CamPhish : grab cam shots from target's phone front camera or PC webcam just
+  sending a link
+date: 2020-06-10 15:54:35
 tags: [Exploit Android,Exploit Windows,Hacking Tool]
 ---
 
