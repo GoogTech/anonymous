@@ -1,5 +1,5 @@
 ---
-title: CHAOS is a PoC that allow generate payloads and control remote operating systems
+title: 'CHAOS : it's a PoC that allow generate payloads and control remote operating systems'
 date: 2020-06-10 14:39:44
 tags: [Exploit Windows,Exploit Linux,Exploit Mac OS,Hacking Tool]
 ---
