@@ -91,10 +91,9 @@ exclude:
 ignore:
 
 # Extensions
-
-Plugins:
-- hexo-generator-cname # avoid the CNAME is invalid after updated blog
-
+# Plugins:
+# - hexo-generator-cname # avoid the CNAME is invalid after updated blog
+# theme
 theme: hexo-theme-lightx
 
 # Deployment
