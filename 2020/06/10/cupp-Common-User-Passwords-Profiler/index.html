@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>cupp : Common User Passwords Profiler | Posts</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
+    <link rel="stylesheet" href="/lightx.css"/>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icon512.png">
+    <meta name="theme-color" content="#ffffff"/>
+    
+  <meta name="generator" content="Hexo 4.2.1"></head>
+  <body>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js', {scope: '/'})
+            .then(function (registration) {
+              // console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(function (err) {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
+  <div id="page-container">
+    <div id="content-wrap">
+      <div class="wrapper">
+        <div class="container">
+            <nav>
+    <ul>
+      <li><a href="/">Posts</a></li>
+      <li><a href="/archives">Archives</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+            <article>
+  <h1>cupp : Common User Passwords Profiler</h1>
+  <div class="contents">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#README-md"><span class="toc-text">README.md</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CUPP-Common-User-Passwords-Profiler"><span class="toc-text">CUPP - Common User Passwords Profiler</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#About"><span class="toc-text">About</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Requirements"><span class="toc-text">Requirements</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-start"><span class="toc-text">Quick start</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Options"><span class="toc-text">Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Configuration"><span class="toc-text">Configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#License"><span class="toc-text">License</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Github-import"><span class="toc-text">Github import</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Original-author"><span class="toc-text">Original author</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Contributors"><span class="toc-text">Contributors</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Repo"><span class="toc-text">Repo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Teching-Video"><span class="toc-text">Teching Video</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Frequent-Issues"><span class="toc-text">Frequent Issues</span></a></li></ol>
+  </div>
+  <h1 id="README-md"><a href="#README-md" class="headerlink" title="README.md"></a><code>README.md</code></h1><h1 id="CUPP-Common-User-Passwords-Profiler"><a href="#CUPP-Common-User-Passwords-Profiler" class="headerlink" title="CUPP - Common User Passwords Profiler"></a>CUPP - Common User Passwords Profiler</h1><p><a href="https://travis-ci.org/Mebus/cupp" target="_blank" rel="noopener"><img src="https://travis-ci.org/Mebus/cupp.svg?branch=master" alt="Build Status"></a><br><a href="https://coveralls.io/github/Mebus/cupp" target="_blank" rel="noopener"><img src="https://coveralls.io/repos/github/Mebus/cupp/badge.svg" alt="Coverage Status"></a><br><a href="https://app.codacy.com/app/Mebus/cupp?utm_source=github.com&utm_medium=referral&utm_content=Mebus/cupp&utm_campaign=Badge_Grade_Dashboard" target="_blank" rel="noopener"><img src="https://api.codacy.com/project/badge/Grade/a578dde078ef481e97a0e7eac0c8d312" alt="Codacy Badge"></a><br><a href="https://inventory.rawsec.ml/" target="_blank" rel="noopener"><img src="https://inventory.rawsec.ml/img/badges/Rawsec-inventoried-FF5050_plastic.svg" alt="Rawsec&#39;s CyberSecurity Inventory"></a></p>
+<h2 id="About"><a href="#About" class="headerlink" title="About"></a>About</h2><p>  The most common form of authentication is the combination of a username<br>  and a password or passphrase. If both match values stored within a locally<br>  stored table, the user is authenticated for a connection. Password strength is<br>  a measure of the difficulty involved in guessing or breaking the password<br>  through cryptographic techniques or library-based automated testing of<br>  alternate values.</p>
+<p>  A weak password might be very short or only use alphanumberic characters,<br>  making decryption simple. A weak password can also be one that is easily<br>  guessed by someone profiling the user, such as a birthday, nickname, address,<br>  name of a pet or relative, or a common word such as God, love, money or password.</p>
+<p>  That is why CUPP was born, and it can be used in situations like legal<br>  penetration tests or forensic crime investigations.</p>
+<h2 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h2><p>You need Python 3 to run CUPP.</p>
+<h2 id="Quick-start"><a href="#Quick-start" class="headerlink" title="Quick start"></a>Quick start</h2><pre><code>$ python3 cupp.py -h</code></pre><h2 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h2><p>  Usage: cupp.py [OPTIONS]</p>
+<pre><code>    -h      this menu
+
+    -i      Interactive questions for user password profiling
+
+    -w      Use this option to profile existing dictionary,
+            or WyD.pl output to make some pwnsauce :)
+
+    -l      Download huge wordlists from repository
+
+    -a      Parse default usernames and passwords directly from Alecto DB.
+            Project Alecto uses purified databases of Phenoelit and CIRT which where merged and enhanced.
+
+    -v      Version of the program</code></pre><h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><p>   CUPP has configuration file cupp.cfg with instructions.</p>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p>  This program is free software; you can redistribute it and/or modify<br>  it under the terms of the GNU General Public License as published by<br>  the Free Software Foundation; either version 3 of the License, or<br>  any later version.</p>
+<p>  This program is distributed in the hope that it will be useful,<br>  but WITHOUT ANY WARRANTY; without even the implied warranty of<br>  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the<br>  GNU General Public License for more details.</p>
+<p>  You should have received a copy of the GNU General Public License<br>  along with this program; if not, write to the Free Software<br>  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA</p>
+<p>  See ‘./LICENSE’ for more information.</p>
+<h2 id="Github-import"><a href="#Github-import" class="headerlink" title="Github import"></a>Github import</h2><p>This project was imported into <a href="https://github.com/Mebus/cupp" target="_blank" rel="noopener">https://github.com/Mebus/cupp</a> by Mebus from:<br><a href="http://www.remote-exploit.org/content/cupp-3.0.tar.gz" target="_blank" rel="noopener">http://www.remote-exploit.org/content/cupp-3.0.tar.gz</a><br><a href="http://www.remote-exploit.org/articles/misc_research__amp_code/index.html" target="_blank" rel="noopener">http://www.remote-exploit.org/articles/misc_research__amp_code/index.html</a><br>to encourage further development of the tool.</p>
+<h2 id="Original-author"><a href="#Original-author" class="headerlink" title="Original author"></a>Original author</h2><p>  Muris Kurgas aka j0rgan<br>  <a href="mailto:j0rgan@remote-exploit.org">j0rgan@remote-exploit.org</a><br>  <a href="http://www.remote-exploit.org" target="_blank" rel="noopener">http://www.remote-exploit.org</a><br>  <a href="http://www.azuzi.me" target="_blank" rel="noopener">http://www.azuzi.me</a>  </p>
+<h2 id="Contributors"><a href="#Contributors" class="headerlink" title="Contributors"></a>Contributors</h2><ul>
+<li><p>Bosko Petrovic aka bolexxx<br><a href="mailto:bole_loser@hotmail.com">bole_loser@hotmail.com</a><br><a href="http://www.offensive-security.com" target="_blank" rel="noopener">http://www.offensive-security.com</a><br><a href="http://www.bolexxx.net" target="_blank" rel="noopener">http://www.bolexxx.net</a>  </p>
+</li>
+<li><p>Mebus<br><a href="https://github.com/Mebus/" target="_blank" rel="noopener">https://github.com/Mebus/</a>  </p>
+</li>
+<li><p>Abhro<br><a href="https://github.com/Abhro/" target="_blank" rel="noopener">https://github.com/Abhro/</a>  </p>
+</li>
+<li><p>Andrea Giacomo<br><a href="https://github.com/codepr" target="_blank" rel="noopener">https://github.com/codepr</a></p>
+</li>
+</ul>
+<h1 id="Repo"><a href="#Repo" class="headerlink" title="Repo"></a><code>Repo</code></h1><blockquote>
+<p><em>github repo : <a href="https://github.com/Mebus/cupp" target="_blank" rel="noopener">https://github.com/Mebus/cupp</a></em></p>
+</blockquote>
+<h1 id="Teching-Video"><a href="#Teching-Video" class="headerlink" title="Teching Video"></a><code>Teching Video</code></h1><blockquote>
+<p><em>how to use it : <a href="https://youtu.be/kdDGMThU45E" target="_blank" rel="noopener">https://youtu.be/kdDGMThU45E</a></em></p>
+</blockquote>
+<h1 id="Frequent-Issues"><a href="#Frequent-Issues" class="headerlink" title="Frequent Issues"></a><code>Frequent Issues</code></h1><blockquote>
+<p>. . .</p>
+</blockquote>
+
+  
+  <p class="copyright"><strong>Links: <a href="http://yoursite.com/2020/06/10/cupp-Common-User-Passwords-Profiler/">http://yoursite.com/2020/06/10/cupp-Common-User-Passwords-Profiler/</a></strong></p>  
+</article>
+
+<div id="comment">
+    
+</div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="wrapper">
+        <div class="container">
+          
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
+<footer>
+    <div>
+        <p>
+            © 2022 <a href="http://yoursite.com">John Doe</a>.
+            Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>.
+            Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx" target="_blank" rel="noopener">lightx</a>.
+            
+        </p>
+    </div>
+</footer>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  </body>
+</html>

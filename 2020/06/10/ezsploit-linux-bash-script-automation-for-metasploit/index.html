@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ezsploit : linux bash script automation for metasploit | Posts</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
+    <link rel="stylesheet" href="/lightx.css"/>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icon512.png">
+    <meta name="theme-color" content="#ffffff"/>
+    
+  <meta name="generator" content="Hexo 4.2.1"></head>
+  <body>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js', {scope: '/'})
+            .then(function (registration) {
+              // console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(function (err) {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
+  <div id="page-container">
+    <div id="content-wrap">
+      <div class="wrapper">
+        <div class="container">
+            <nav>
+    <ul>
+      <li><a href="/">Posts</a></li>
+      <li><a href="/archives">Archives</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+            <article>
+  <h1>ezsploit : linux bash script automation for metasploit</h1>
+  <div class="contents">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#README-md"><span class="toc-text">README.md</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ezsploit"><span class="toc-text">ezsploit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Repo"><span class="toc-text">Repo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Teching-Video"><span class="toc-text">Teching Video</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Frequent-Issues"><span class="toc-text">Frequent Issues</span></a></li></ol>
+  </div>
+  <h1 id="README-md"><a href="#README-md" class="headerlink" title="README.md"></a><code>README.md</code></h1><h1 id="ezsploit"><a href="#ezsploit" class="headerlink" title="ezsploit"></a>ezsploit</h1><p><img src="https://lh3.googleusercontent.com/yiZeYdV4TwAOYrjdrlyycPDiTWz2CjzkhC7oT-TecNcSRVVFiYC9B3allfR4DzeMAS1uyIQVAC9vR_OzCMaWJLrHm3xw1m_w0A135ebsg8fuZxmIAkP6E1VkewRh3mK59CbDdVCpnE27conw-RVzY-QV8bjFGcWdo3ggPOGd0_K75ISd59FelzSAD2RxkwzdfAfjdI5dFNlVGA_wIiVy73hghXzHJJv_G_M008qe2lqiYhN5dC7Z-hY3WA4PdeYO8TdV1HZzAoqn8tD0_6RgXFWS5d_Um3BUL_J8p8v3QwVZQNX2O00euWaKoQpsT4R5YRkfT-1J1-6_MCnI30xgtAktN-mdJfmSXrPozPdCQuDIZcM99DY1qqH9XSdDYdVk9ppqRFk9clMghaVqj5p-bR-nKZIeJS5FyiQAFXnT0V3jpgqKGJGTcboY6OSPulKvozuK_hx5PFhMl07Q4lVmGpsjO7ZJUUIRoleXSGAEmtjKs_JmE8PUOpj6B5N5Y-ID0-S3SyNRzLvlZBR9DnP2zjzyPhy4eKZY-0pLXiM1njI69bCzux5wlto51PfUdoKJf6JY=w484-h541-no" alt="Alt text" title="Main screen"><br>Linux bash script automation for metasploit</p>
+<hr>
+<p>Command line script for automating metasploit functions</p>
+<ul>
+<li><p>Checks for metasploit service and starts if not present</p>
+</li>
+<li><p>Easily craft meterpreter reverse_tcp payloads for Windows, Linux, Android and Mac</p>
+</li>
+<li><p>Start multiple meterpreter reverse_tcp listners </p>
+</li>
+<li><p>Assistance with building basic persistence options and scripts</p>
+</li>
+<li><p>Armitage launcher </p>
+</li>
+<li><p>Drop into Msfconsole</p>
+</li>
+<li><p>Some other fun stuff :)</p>
+</li>
+</ul>
+<hr>
+<p>To-Do<br>Add more functions to payloads/listners, java, php, tomcat etc<br>Improve overall functionality</p>
+<p>Screenshots</p>
+<p><img src="https://lh3.googleusercontent.com/2_kIZVLfV37vEOtAzaaCocfgK2R2WhZ3ZG2WGr_KTZlzhxzw80IG2_TGEeG8N-BQXPU3qHHuC8WE3oSlDFD0oidMfv-rejay3dwlK1Dv6gxKlzCERxI1xoiOqQeSZIam3VfCq6ZxElgak47pfJdp1ZxhmfnNH_ELQF2uXQBZSDCdyg_6rLlyUP78HU8MM22PqHQH286R1QYPXJGhA2JJ1n1wQvd5oR7fYkO4yu9Qp5MvxoUcjWKXGtd0PereVdKCm05zBGRrOFj4dTjo-j6gWhBJAy-FGL5Vf8sqjQo7CWlq2GtvqOuoUPTjDXt70eYyg3QFZHae9RFfYrd3YxarNAzrplaP71jn_pW-SrXWo0gfezIOU0YqwhlfaqAfi5nwUyVkhZ1GXWDv5z3HgOWDkZiAKr4SIrUaZVu-AaUNX9vB6rds7hEtiQgQyiznDQPcjCmKi-CcTAbDIvYHWqZki00RnudhQjcBfsRi8VXEFIeXLWyHMWbMT_M7ihTPcKVmHVVDSCSLqi5uivMwHaOHsl4-ZUKj0NlM789scDDd0faqihYbHvcL0P3tKat1SqpRavNf=w484-h541-no" alt="Alt text" title="Interactive payload generator"></p>
+<p><img src="https://lh3.googleusercontent.com/u_5eZt8J0jyV3lctOYKDej7rwIFZ7Z7szLkYFuPgskYD180cpkjEBSD1T7VdwRHIlX-qlS7w4uaNDv0CcMWIFI82ZTUeFmMyRt2kYMjYO8fPLkMxontDpBeHQax2HJNs_rW_TPpD4ueIyPKvrGcnarAzj9WEcrLUVb0ShkPleGYUfUBBU-gmigT0WtOdLrdiUxMZPb4Xib5Q9nhmX7FlDThhTgrOKlH3l5H2Z-7TRyZ-kSgBBwLJ00W6ooZTuwC4tifTEK2f7fHeLNWz9HmmM0Ic1Tgc5_iCMJgrxXLxTDZQKN8NTFXIfiDoJRaUJP1tWmae9LoVkmLb0T0U0_aiAlaSKFzSE7YqP-jYGdMcVZWOdKCLm3ds1ETy0H0rN92nctXjykgDtn40OiJbE_mr-rgCGzMQfPQEZYSkWienMK63Q5uISCsbkyd0VrTN92ya8Y9sn_msICbpmtoDVV0Oi8fQ3THA0tTkOHgdAoZhSangHcUVjTLvyZT8QKoxGRcemIcqxkakEKIeSk5u6OCZQI3P0R9Zhn2T0TGePcydD3z3wgmXm7VOmzk6bZVKwhwGlnQt=w950-h673-no" alt="Alt text" title="Easily start reverse listners"></p>
+<h1 id="Repo"><a href="#Repo" class="headerlink" title="Repo"></a><code>Repo</code></h1><blockquote>
+<p><em>github repo : <a href="https://github.com/rand0m1ze/ezsploit" target="_blank" rel="noopener">https://github.com/rand0m1ze/ezsploit</a></em></p>
+</blockquote>
+<h1 id="Teching-Video"><a href="#Teching-Video" class="headerlink" title="Teching Video"></a><code>Teching Video</code></h1><blockquote>
+<p><em>how to use it : <a href="https://youtu.be/LZV-0t2t70E" target="_blank" rel="noopener">https://youtu.be/LZV-0t2t70E</a></em></p>
+</blockquote>
+<h1 id="Frequent-Issues"><a href="#Frequent-Issues" class="headerlink" title="Frequent Issues"></a><code>Frequent Issues</code></h1><blockquote>
+<p>. . .</p>
+</blockquote>
+
+  
+  <p class="copyright"><strong>Links: <a href="http://yoursite.com/2020/06/10/ezsploit-linux-bash-script-automation-for-metasploit/">http://yoursite.com/2020/06/10/ezsploit-linux-bash-script-automation-for-metasploit/</a></strong></p>  
+</article>
+
+<div id="comment">
+    
+</div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="wrapper">
+        <div class="container">
+          
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
+<footer>
+    <div>
+        <p>
+            © 2022 <a href="http://yoursite.com">John Doe</a>.
+            Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>.
+            Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx" target="_blank" rel="noopener">lightx</a>.
+            
+        </p>
+    </div>
+</footer>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  </body>
+</html>

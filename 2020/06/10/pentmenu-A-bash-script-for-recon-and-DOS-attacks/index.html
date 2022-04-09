@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>pentmenu : A bash script for recon and DOS attacks | Posts</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
+    <link rel="stylesheet" href="/lightx.css"/>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icon512.png">
+    <meta name="theme-color" content="#ffffff"/>
+    
+  <meta name="generator" content="Hexo 4.2.1"></head>
+  <body>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js', {scope: '/'})
+            .then(function (registration) {
+              // console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(function (err) {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
+  <div id="page-container">
+    <div id="content-wrap">
+      <div class="wrapper">
+        <div class="container">
+            <nav>
+    <ul>
+      <li><a href="/">Posts</a></li>
+      <li><a href="/archives">Archives</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+            <article>
+  <h1>pentmenu : A bash script for recon and DOS attacks</h1>
+  <div class="contents">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#README-md"><span class="toc-text">README.md</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pentmenu"><span class="toc-text">pentmenu</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Requirements"><span class="toc-text">Requirements:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-use"><span class="toc-text">How to use?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Module-detail"><span class="toc-text">Module detail</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Disclaimer"><span class="toc-text">Disclaimer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Also-see"><span class="toc-text">Also see</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Donations"><span class="toc-text">Donations</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Repo"><span class="toc-text">Repo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Teching-Video"><span class="toc-text">Teching Video</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Frequent-Issues"><span class="toc-text">Frequent Issues</span></a></li></ol>
+  </div>
+  <h1 id="README-md"><a href="#README-md" class="headerlink" title="README.md"></a><code>README.md</code></h1><h1 id="pentmenu"><a href="#pentmenu" class="headerlink" title="pentmenu"></a>pentmenu</h1><p><strong>A bash select menu for quick and easy network recon and DOS attacks</strong></p>
+<p>Sudo is implemented where necesssary.<br>Tested on Debian and Arch.</p>
+<h2 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements:"></a>Requirements:</h2><ul>
+<li><p>bash</p>
+</li>
+<li><p>sudo </p>
+</li>
+<li><p>curl</p>
+</li>
+<li><p>netcat (must support ‘-k’ option, openbsd variant recommended)</p>
+</li>
+<li><p>hping3 (or nping can be used as a substitute for flood attacks)</p>
+</li>
+<li><p>openssl</p>
+</li>
+<li><p>stunnel</p>
+</li>
+<li><p>nmap</p>
+</li>
+<li><p>whois (not essential but preferred)</p>
+</li>
+<li><p>nslookup (or ‘host’)</p>
+</li>
+<li><p>ike-scan</p>
+</li>
+</ul>
+<h2 id="How-to-use"><a href="#How-to-use" class="headerlink" title="How to use?"></a>How to use?</h2><ul>
+<li>Download the script:</li>
+</ul>
+<pre><code>$ wget https://raw.githubusercontent.com/GinjaChris/pentmenu/master/pentmenu</code></pre><ul>
+<li>Make it executable:</li>
+</ul>
+<pre><code>$ chmod +x ./pentmenu</code></pre><ul>
+<li>Run it:</li>
+</ul>
+<pre><code>$ ./pentmenu</code></pre><p>Alternatively, download the latest release from <a href="https://github.com/GinjaChris/pentmenu/releases" target="_blank" rel="noopener">https://github.com/GinjaChris/pentmenu/releases</a>, extract it and run the script.<br>Or use git clone:</p>
+<pre><code>git clone https://github.com/GinjaChris/pentmenu</code></pre><h2 id="Module-detail"><a href="#Module-detail" class="headerlink" title="Module detail"></a>Module detail</h2><p><strong>RECON MODULES</strong></p>
+<ul>
+<li>Show IP - uses curl to perform a lookup of your external IP. Runs ip a or ifconfig (as appropriate) to show local interface IP’s.</li>
+</ul>
+<ul>
+<li>DNS Recon - passive recon, performs a DNS lookup (forward or reverse as appropriate for target input) and a whois lookup of the target.  If whois is not available it will perform a lookup against ipinfo.io (only works for IP’s, not hostnames).</li>
+</ul>
+<ul>
+<li>Ping Sweep - uses nmap to perform an ICMP echo (ping) against the target host or network.</li>
+</ul>
+<ul>
+<li>Quick Scan - TCP Port scanner using nmap to scan for open ports using TCP SYN scan.  Nmap will not perform a ping sweep prior to performing the TCP SYN scan. This module scans the 1,000 most common ports. This module can, of course, be used to scan a single host or a full network but is really designed to identify targets across a range of IP addresses. This scan can take a long time to finish, please be patient.</li>
+</ul>
+<ul>
+<li>Detailed Scan - uses nmap to identify live hosts, open ports, attempts OS identification, grabs banners/identifies running software version.  Nmap will not perform a ping sweep prior as part of this scan.  Nmap’s default User-Agent string is changed to that of IE11 in this mode, to help avoid detection via HTTP. <em>All</em> TCP ports on the target (hostname/IP/subnet) are scanned. Whilst module can scan a single host or many hosts, its intended use is to perform an information gathering scan against a single system. This scan can take a long time to finish, please be patient.</li>
+</ul>
+<ul>
+<li>UDP scan - uses nmap to scan for open UDP ports. <em>All</em> UDP ports are scanned.</li>
+</ul>
+<ul>
+<li>Check Server Uptime - estimates the uptime of the target by querying an open TCP port with hping3. Accuracy of the results varies from one machine to another; this does not work against all servers.</li>
+</ul>
+<ul>
+<li>IPsec Scan - attempts to identify the presence of an IPsec VPN server with the use of ike-scan and various Phase 1 proposals. Any text output from this module, whether it be regarding “handshake” or “no proposal chosen”, indicates the presence of an IPsec VPN server.  See <a href="http://nta-monitor.com/wiki/index.php/Ike-scan_User_Guide" target="_blank" rel="noopener">http://nta-monitor.com/wiki/index.php/Ike-scan_User_Guide</a> for an excellent overview of ike-scan and VPN phase 1.</li>
+</ul>
+<p><strong>DOS MODULES</strong></p>
+<ul>
+<li>ICMP Echo Flood - uses hping3 to launch a traditional ICMP Echo flood against the target.  On a modern system you are unlikely to achieve much, but it is seful to test against firewalls to observe their behaviour.  Use ‘Ctrl C’ to end the flood.<br>The source address of flood packets is configurable. Note that the target can be an IP (i.e 127.0.0.1) or a hostname (i.e localhost.localnet.com).  Do NOT include the protocol as part of the target (i.e. <a href="http://localhost.localnet.com" target="_blank" rel="noopener">http://localhost.localnet.com</a>).</li>
+</ul>
+<ul>
+<li>ICMP Blacknurse Flood - uses hping3 to launch an ICMP flood against the target.  ICMP packets are of type “Destination Unreachable, Port Unreachable”. This attack can cause high CPU usage on many systems.  Use ‘Ctrl C’ to end the attack.  See <a href="http://blacknurse.dk/" target="_blank" rel="noopener">http://blacknurse.dk/</a> for more information. The source address of flood packets is configurable. </li>
+</ul>
+<ul>
+<li>TCP SYN Flood - sends a flood of TCP SYN packets using hping3.  If hping3 is not found, it attempts to use the nmap-nping utility instead. Hping3 is preferred since it sends packets as fast as possible.  Options are provided to use a source IP of your interface, or specify (spoof) a source IP, or spoof a random source IP for each packet.<br>Optionally, you can add data to the SYN packet.  All SYN packets have the fragmentation bit set and use hpings virtual MTU of 16 bytes, guaranteeing fragmentation.<br>Falling back to nmap-nping means sending X number of packets per second until Y number of packets is sent and only allows the use of interface IP or a specified (spoofed) source IP.<br>A TCP SYN flood is unlikely to break a server, but is a good way to test switch/router/firewall infrastructure and state tables.<br>Note that whilst hping will report the outbound interface and IP which might make you think script does not work as expected, the source IP <em>will</em> be set as specified; review a packet capture of the traffic if in doubt!<br>Since the source is definable, it is simple to launch a LAND attack for example (see <a href="https://en.wikipedia.org/wiki/LAND" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/LAND</a>).  The ability to set the source also allows, for example, sending SYN packets to one target and forcing the SYN-ACK responses to a second target.</li>
+</ul>
+<ul>
+<li>TCP ACK Flood - offers the same options as the SYN flood, but sets the ACK (Acknowledgement) TCP flag instead.<br>Some systems will spend excessive CPU cycles processing such packets.  If the source IP is set to that of an established connection, it is possible that an estabished connection can be disrupted by this ‘blind’ TCP ACK Flood.  This attack is considered ‘blind’ because it does not take into account any details of any established connection (like sequence or acknowledgement numbers).  </li>
+</ul>
+<ul>
+<li>TCP RST Flood - offers the same options as the SYN flood, but sets the RST (Reset) TCP flag instead.<br>Such an attack could interrupt established connections if the source IP is set to that of an established connection.<br>See <a href="https://en.wikipedia.org/wiki/TCP_reset_attack" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/TCP_reset_attack</a> for example.</li>
+</ul>
+<ul>
+<li>TCP XMAS Flood - similar to the SYN and ACK floods, with the same options, but sends packets with all TCP flags set (CWR,ECN,URG,ACK,PSH,RST,SYN,FIN).  The packet is considered to be ‘lit up like a christmase tree’.  Theoretically at least, such a packet requires more resources for the receiver to process than a standard packet.<br>However, such packets are quite indicative of unusual behaviour (such as an attack) and are usually easily identified by IDS/IDP.</li>
+</ul>
+<ul>
+<li>UDP Flood - much like the TCP SYN Flood but instead sends UDP packets to the specified host:port. Like the TCP SYN Flood function, hping3 is used but if it is not found, it attempts to use nmap-nping instead.  All options are the same as TCP SYN Flood, except you must specify data to send in the UDP packets.<br>Again, this is a good way to check switch/router throughput or to test VOIP systems.</li>
+</ul>
+<ul>
+<li>SSL DOS - uses OpenSSL to attempt to DOS a target host:port.  It does this by opening many connections and causing the server to make expensive handshake calculations.  This is not a pretty or elegant piece of code, do not expect it to stop immediately upon pressing ‘Ctrl c’, but it can be brutally effective.<br>The option for client renegotiation is given;  if the target server supports client initiated renegotiation, this option should be chosen.<br>Even if the target server does not support client renegotiation (for example CVE-2011-1473), it is still possible to impact/DOS the server with this attack.<br>It is very useful to run this against loadbalancers/proxies/SSL-enabled servers (not just HTTPS, but any SSL or TLS encrypted service!) to see how they cope under the strain.</li>
+</ul>
+<ul>
+<li>Slowloris - uses netcat to slowly send HTTP Headers to the target host:port with the intention of starving it of resources.  This is effective against many, although not all, HTTP servers, provided the connections can be held open for long enough.  Therefore this attack is only effective if the server does not limit the time available to send a complete HTTP request.<br>Some implementations of this attack use clearly identifiable headers which is not the case here.  The number of connections to open to the target is configurable.<br>The interval between sending each header line is configurable, with the default being a random value between 5 and 15 seconds. The idea is to send headers slowly, but not so slow that the servers idle timeout closes the connection.  For example, if we send one header line every 900 seconds, the likelyhood is that the server will have closed the connection long before we send a second header line.<br>The option to use SSL (SSL/TLS) is given, which requires stunnel and allows the attack to be used against a HTTPS server.  You don’t use the SSL option against a plain HTTP server.</li>
+</ul>
+<p>Defences against this attack include (but are not limited to):</p>
+<p>Limiting the number of TCP connections per client; this will prevent a single machine from making the server unavailable, but is not effective if say, 10,000 clients launch the attack simultaneously.  Additionally, such a defensive measure may negatively impact multiple (legitimate) clients operating behind a forward proxy server.</p>
+<p>Limiting the time available to send a complete HTTP request; this is effective since the attack relies on slowly sending headers to the server (the server should await all headers from the client before responding).  If the server limits the time for receiving all headers of a request to 10 seconds (for example) it will severely limit the effectiveness of the attack.  It is possible that such a measure will prevent legitimate clients over slow/lossy connections from accessing the site.</p>
+<ul>
+<li>IPsec DOS - uses ike-scan to attempt to flood the specified IP with Main mode and Aggressive mode Phase 1 packets from random source IP’s.  Use the IPsec Scan module to identify the presence of an IPsec VPN server.</li>
+</ul>
+<ul>
+<li>Distraction Scan - this is not really a DOS attack but simply launches multiple TCP SYN scans, using hping3, from a spoofed IP of your choosing (such as the IP of your worst enemy). It is designed to be an obvious scan in order to trigger any lDS/IPS the target may have and so hopefully obscure any actual scan or other action that you may be carrying out.</li>
+</ul>
+<ul>
+<li>DNS NXDOMAIN Flood - this attack uses the dig utility and is designed to stress test your DNS server by sending a flood of DNS queries for non-existent domains.  When run against a recursive DNS server it tries to tie up the server and fill the cache with negative responses, slowing/preventing legitimate queries.  Works best launched from multiple attacking clients. Use ‘Ctrl c’ to stop the attack.</li>
+</ul>
+<p><strong>EXTRACTION MODULES</strong></p>
+<ul>
+<li>Send File - This module uses netcat to send data with TCP or UDP.  It can be extremely useful for extracting data.<br>An md5 and sha512 checksum is calculated and displayed prior to sending the file.<br>The file can be sent to a server of your choice; the Listener is designed to receive these files.</li>
+</ul>
+<ul>
+<li>Listener - uses netcat to open a listener on a configurable TCP or UDP port.  This can be useful for testing syslog connectivity, receive files or checking for active scanning on the network. Anything received by the listener is written out to ./pentmenu.listener.out or a file of your choice.<br>When receiving files over UDP, the listener must be manually closed with ‘Ctrl C’.  This is because we have to force netcat to stay open to receive multiple packets, since UDP is a connectionless protocol.<br>When receiving files over TCP, the connection automatically closes after the client closes their connection (once the file is transferred) and md5 and sha512 checksums are calculated for the received file.</li>
+</ul>
+<h2 id="Disclaimer"><a href="#Disclaimer" class="headerlink" title="Disclaimer"></a>Disclaimer</h2><p>This script is only for responsible, authorised use. You are responsible for your own actions and this script is provided without warranty or guarantee of any kind.  The author(s) accept no responsibility or liability on your behalf.</p>
+<h2 id="Also-see"><a href="#Also-see" class="headerlink" title="Also see"></a>Also see</h2><p>Pentmenu is available as a <a href="https://archstrike.org/packages/pentmenu" target="_blank" rel="noopener">package</a> on Arch Linux. Big love to <a href="https://archstrike.org/" target="_blank" rel="noopener">ArchStrike</a> and <a href="https://www.parrotsec.org/" target="_blank" rel="noopener">Parrot linux</a>.</p>
+<h2 id="Donations"><a href="#Donations" class="headerlink" title="Donations"></a>Donations</h2><p>Donations are accepted in cryptocurrency:</p>
+<p>Bitcoin:</p>
+<pre><code>1E5S4acQmjky84HFzF9oQVy23UbG2LoXiy</code></pre><h1 id="Repo"><a href="#Repo" class="headerlink" title="Repo"></a><code>Repo</code></h1><blockquote>
+<p><em>github repo : <a href="https://github.com/GinjaChris/pentmenu" target="_blank" rel="noopener">https://github.com/GinjaChris/pentmenu</a></em></p>
+</blockquote>
+<h1 id="Teching-Video"><a href="#Teching-Video" class="headerlink" title="Teching Video"></a><code>Teching Video</code></h1><blockquote>
+<p><em>DDos Attacks on owaspbwa Using Pentmenu : <a href="https://youtu.be/ckEPTic0cA0" target="_blank" rel="noopener">https://youtu.be/ckEPTic0cA0</a></em></p>
+</blockquote>
+<h1 id="Frequent-Issues"><a href="#Frequent-Issues" class="headerlink" title="Frequent Issues"></a><code>Frequent Issues</code></h1><blockquote>
+<p>. . .</p>
+</blockquote>
+
+  
+  <p class="copyright"><strong>Links: <a href="http://yoursite.com/2020/06/10/pentmenu-A-bash-script-for-recon-and-DOS-attacks/">http://yoursite.com/2020/06/10/pentmenu-A-bash-script-for-recon-and-DOS-attacks/</a></strong></p>  
+</article>
+
+<div id="comment">
+    
+</div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="wrapper">
+        <div class="container">
+          
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
+<footer>
+    <div>
+        <p>
+            © 2022 <a href="http://yoursite.com">John Doe</a>.
+            Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>.
+            Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx" target="_blank" rel="noopener">lightx</a>.
+            
+        </p>
+    </div>
+</footer>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  </body>
+</html>

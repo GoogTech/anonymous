@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CamPhish : grab cam shots from target&#39;s phone front camera or PC webcam just sending a link | Posts</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
+    <link rel="stylesheet" href="/lightx.css"/>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icon512.png">
+    <meta name="theme-color" content="#ffffff"/>
+    
+  <meta name="generator" content="Hexo 4.2.1"></head>
+  <body>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js', {scope: '/'})
+            .then(function (registration) {
+              // console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(function (err) {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
+  <div id="page-container">
+    <div id="content-wrap">
+      <div class="wrapper">
+        <div class="container">
+            <nav>
+    <ul>
+      <li><a href="/">Posts</a></li>
+      <li><a href="/archives">Archives</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+            <article>
+  <h1>CamPhish : grab cam shots from target's phone front camera or PC webcam just sending a link</h1>
+  <div class="contents">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#README-md"><span class="toc-text">README.md</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CamPhish"><span class="toc-text">CamPhish</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#What-is-CamPhish"><span class="toc-text">What is CamPhish?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Features"><span class="toc-text">Features</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#This-Tool-Tested-On"><span class="toc-text">This Tool Tested On :</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Installing-and-requirements"><span class="toc-text">Installing and requirements</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Installing-Kali-Linux-Termux"><span class="toc-text">Installing (Kali Linux&#x2F;Termux):</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Video-Demo"><span class="toc-text">Video Demo</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#For-More-Video-subcribe-TechChip-YouTube-Channel"><span class="toc-text">For More Video subcribe TechChip YouTube Channel</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Repo"><span class="toc-text">Repo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Teching-Video"><span class="toc-text">Teching Video</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Frequent-Issues"><span class="toc-text">Frequent Issues</span></a></li></ol>
+  </div>
+  <h1 id="README-md"><a href="#README-md" class="headerlink" title="README.md"></a><code>README.md</code></h1><h1 id="CamPhish"><a href="#CamPhish" class="headerlink" title="CamPhish"></a>CamPhish</h1><p>Grab cam shots from target’s phone front camera or PC webcam just sending a link.<br><img src="https://techchip.net/wp-content/uploads/2020/04/camphish.jpg" alt="cheese"></p>
+<h1 id="What-is-CamPhish"><a href="#What-is-CamPhish" class="headerlink" title="What is CamPhish?"></a>What is CamPhish?</h1><p>CamPhish is techniques to take cam shots of target's phone fornt camera or PC webcam. CamPhish Hosts a fake website on in built PHP server and uses ngrok & serveo to generate a link which we will forward to the target, which can be used on over internet. website asks for camera permission and if the target allows it, this tool grab camshots of target's device</p>
+
+<h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><p>In this tool I added two automatic webpage templates for engaged target on webpage to get more picture of cam</p>
+<ul>
+  <li>Festival Wishing</li>
+  <li>Live YouTube TV</li>
+</ul>
+<p>simply enter festival name or youtube's video ID</p>
+
+<h2 id="This-Tool-Tested-On"><a href="#This-Tool-Tested-On" class="headerlink" title="This Tool Tested On :"></a>This Tool Tested On :</h2><ul>
+  <li>Kali Linux</li>
+  <li>Termux</li>
+  <li>MacOS</li>
+  <li>Ubuntu</li>
+  <li>Perrot Sec OS</li>
+</ul>
+
+<h1 id="Installing-and-requirements"><a href="#Installing-and-requirements" class="headerlink" title="Installing and requirements"></a>Installing and requirements</h1><p>This tool require PHP for webserver, SSH or serveo link. First run following command on your terminal</p>
+
+<pre><code>apt-get -y install php openssh git wget</code></pre><h2 id="Installing-Kali-Linux-Termux"><a href="#Installing-Kali-Linux-Termux" class="headerlink" title="Installing (Kali Linux/Termux):"></a>Installing (Kali Linux/Termux):</h2><pre><code>git clone https://github.com/techchipnet/CamPhish
+cd CamPhish
+bash camphish.sh</code></pre><h3 id="Video-Demo"><a href="#Video-Demo" class="headerlink" title="Video Demo"></a>Video Demo</h3><p><a href="https://www.youtube.com/watch?v=G_nNHrWwCOM" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/G_nNHrWwCOM/0.jpg" alt="How to control android camera"></a></p>
+<h4 id="For-More-Video-subcribe-TechChip-YouTube-Channel"><a href="#For-More-Video-subcribe-TechChip-YouTube-Channel" class="headerlink" title="For More Video subcribe TechChip YouTube Channel"></a>For More Video subcribe <a href="http://youtube.com/techchipnet" target="_blank" rel="noopener">TechChip YouTube Channel</a></h4><p>CamPhish is created to help in penetration testing and it's not responsible for any misuse or illegal purposes.</p>
+<p>CamPhish is inspired by https://github.com/thelinuxchoice/ Big thanks to @thelinuxchoice</p>
+
+
+<h1 id="Repo"><a href="#Repo" class="headerlink" title="Repo"></a><code>Repo</code></h1><blockquote>
+<p><em>github repo : <a href="https://github.com/techchipnet/CamPhish" target="_blank" rel="noopener">https://github.com/techchipnet/CamPhish</a></em></p>
+</blockquote>
+<h1 id="Teching-Video"><a href="#Teching-Video" class="headerlink" title="Teching Video"></a><code>Teching Video</code></h1><blockquote>
+<p><em>how to use it : <a href="https://youtu.be/G_nNHrWwCOM" target="_blank" rel="noopener">https://youtu.be/G_nNHrWwCOM</a></em></p>
+</blockquote>
+<h1 id="Frequent-Issues"><a href="#Frequent-Issues" class="headerlink" title="Frequent Issues"></a><code>Frequent Issues</code></h1><blockquote>
+<p><em>can’t get image from target : <a href="https://github.com/techchipnet/CamPhish/issues/23" target="_blank" rel="noopener">https://github.com/techchipnet/CamPhish/issues/23</a></em></p>
+</blockquote>
+
+  
+  <p class="copyright"><strong>Links: <a href="http://yoursite.com/2020/06/10/CamPhish-grab-cam-shots-from-target-s-phone-front-camera-or-PC-webcam-just-sending-a-link/">http://yoursite.com/2020/06/10/CamPhish-grab-cam-shots-from-target-s-phone-front-camera-or-PC-webcam-just-sending-a-link/</a></strong></p>  
+</article>
+
+<div id="comment">
+    
+</div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="wrapper">
+        <div class="container">
+          
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
+<footer>
+    <div>
+        <p>
+            © 2022 <a href="http://yoursite.com">John Doe</a>.
+            Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>.
+            Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx" target="_blank" rel="noopener">lightx</a>.
+            
+        </p>
+    </div>
+</footer>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  </body>
+</html>

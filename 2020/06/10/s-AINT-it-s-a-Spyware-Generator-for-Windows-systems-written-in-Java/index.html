@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>(s)AINT : it&#39;s a Spyware Generator for Windows systems written in Java | Posts</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
+    <link rel="stylesheet" href="/lightx.css"/>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icon512.png">
+    <meta name="theme-color" content="#ffffff"/>
+    
+  <meta name="generator" content="Hexo 4.2.1"></head>
+  <body>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js', {scope: '/'})
+            .then(function (registration) {
+              // console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(function (err) {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
+  <div id="page-container">
+    <div id="content-wrap">
+      <div class="wrapper">
+        <div class="container">
+            <nav>
+    <ul>
+      <li><a href="/">Posts</a></li>
+      <li><a href="/archives">Archives</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+            <article>
+  <h1>(s)AINT : it's a Spyware Generator for Windows systems written in Java</h1>
+  <div class="contents">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#README-md"><span class="toc-text">README.md</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Discontinued"><span class="toc-text">Discontinued</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-text">(s)AINT</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Disclaimer"><span class="toc-text">Disclaimer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Features"><span class="toc-text">Features</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tested-On"><span class="toc-text">Tested On</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-To-Use"><span class="toc-text">How To Use</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Note"><span class="toc-text">Note</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FAQ"><span class="toc-text">FAQ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Why-does-the-EXE-need-java-on-target-machine-to-run"><span class="toc-text">Why does the .EXE need java on target machine to run?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Screenshot"><span class="toc-text">Screenshot</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#"><span class="toc-text"> Maven dependencies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#"><span class="toc-text"> Generate spyware</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Run"><span class="toc-text">Run</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#"><span class="toc-text">Install Java JRE 8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#"><span class="toc-text">Run .EXE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#"><span class="toc-text">or Run .JAR</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Data"><span class="toc-text">Data</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#"><span class="toc-text">Local</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#"><span class="toc-text"> E-mail</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-uninstall"><span class="toc-text">How to uninstall</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Contact"><span class="toc-text">Contact</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#License"><span class="toc-text">License</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Repo"><span class="toc-text">Repo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Teching-Video"><span class="toc-text">Teching Video</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Frequent-Issues"><span class="toc-text">Frequent Issues</span></a></li></ol>
+  </div>
+  <h1 id="README-md"><a href="#README-md" class="headerlink" title="README.md"></a><code>README.md</code></h1><hr>
+<h2 id="Discontinued"><a href="#Discontinued" class="headerlink" title="Discontinued"></a>Discontinued</h2><p>I decided to discontinue the development of this tool to concentrate my efforts on others one projects.</p>
+<p>Please fell free to clone this repository and continue the development of this tool.</p>
+<hr>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tiagorlampert/sAINT/master/content/logo.png">
+</p>
+
+<h1 align="center">(s)AINT</h1>
+<p align="center">
+  <a href="https://www.java.com" target="_blank" rel="noopener">
+    <img src="https://img.shields.io/badge/Java-8-red.svg">
+  </a>
+  <a href="https://github.com/tiagorlampert/sAINT/blob/master/LICENSE" target="_blank" rel="noopener">
+    <img src="https://img.shields.io/badge/License-BSD%203-lightgrey.svg">
+  </a>
+  <a href="https://github.com/tiagorlampert/sAINT/tree/master/src_template/main/java/saint" target="_blank" rel="noopener">
+    <img src="https://img.shields.io/badge/Release-1.0-blue.svg">
+  </a>
+    <a href="https://opensource.org/licenses/BSD-3-Clause" target="_blank" rel="noopener">
+    <img src="https://img.shields.io/badge/Open%20Source-%E2%9D%A4-brightgreen.svg">
+  </a>
+</p>
+
+<p align="center">
+  (s)AINT is a Spyware Generator for Windows systems written in Java.
+</p>
+
+<h2 id="Disclaimer"><a href="#Disclaimer" class="headerlink" title="Disclaimer"></a>Disclaimer</h2><p align="center">
+  :computer: This project was created only for good purposes and personal use.
+</p>
+
+<p>THIS SOFTWARE IS PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND. YOU MAY USE THIS SOFTWARE AT YOUR OWN RISK. THE USE IS COMPLETE RESPONSIBILITY OF THE END-USER. THE DEVELOPERS ASSUME NO LIABILITY AND ARE NOT RESPONSIBLE FOR ANY MISUSE OR DAMAGE CAUSED BY THIS PROGRAM.</p>
+<h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><ul>
+<li><input checked disabled type="checkbox"> Keylogger</li>
+<li><input checked disabled type="checkbox"> Take Screenshot</li>
+<li><input checked disabled type="checkbox"> Webcam Capture</li>
+<li><input checked disabled type="checkbox"> Persistence</li>
+</ul>
+<h2 id="Tested-On"><a href="#Tested-On" class="headerlink" title="Tested On"></a>Tested On</h2><p><a href="https://www.kali.org" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=https://www.kali.org/" alt="Kali)"></a> <strong>Kali Linux - ROLLING EDITION</strong></p>
+<h2 id="How-To-Use"><a href="#How-To-Use" class="headerlink" title="How To Use"></a>How To Use</h2><pre><code class="bash"># Install dependencies (you need Maven and JDK 8 package installed)
+$ apt install maven default-jdk default-jre openjdk-8-jdk openjdk-8-jre -y
+
+# To generate a .EXE using launch4j are necessary the following packages
+$ apt install zlib1g-dev libncurses5-dev lib32z1 lib32ncurses6 -y
+
+# Clone this repository
+$ git clone https://github.com/tiagorlampert/sAINT.git
+
+# Go into the repository
+$ cd sAINT
+
+# Install and configure Maven libraries
+$ chmod +x configure.sh
+$ ./configure.sh
+
+# Run
+$ java -jar sAINT.jar</code></pre>
+<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><ul>
+<li>On Windows, install the latest <a href="https://www.java.com/en/download/" target="_blank" rel="noopener">Java JRE 8</a> from Oracle.</li>
+<li>E-mail will be sent when it reaches the specified number of characters.</li>
+<li>Optionally you can enable Screenshot, Webcam Capture and Persistence.</li>
+</ul>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><blockquote>
+<h4 id="Why-does-the-EXE-need-java-on-target-machine-to-run"><a href="#Why-does-the-EXE-need-java-on-target-machine-to-run" class="headerlink" title="Why does the .EXE need java on target machine to run?"></a>Why does the .EXE need java on target machine to run?</h4><p>The JRE is required and the executable will not work without it. Because the Windows need JRE for translating the program from java byte code to machine language.</p>
+</blockquote>
+<h2 id="Screenshot"><a href="#Screenshot" class="headerlink" title="Screenshot"></a>Screenshot</h2>  <h3 align="center"> Maven dependencies</h3>
+
+  <p align="center"> <img src="https://github.com/tiagorlampert/sAINT/blob/master/content/1.gif"> </p>
+
+  <h3 align="center"> Generate spyware</h3>
+
+  <p align="center"> <img src="https://github.com/tiagorlampert/sAINT/blob/master/content/2.gif"> </p>
+
+<h2 id="Run"><a href="#Run" class="headerlink" title="Run"></a>Run</h2><h3 align="center">Install Java JRE 8</h3>
+
+<p align="center">
+  <img src="https://github.com/tiagorlampert/sAINT/blob/master/content/jre.gif">
+</p>
+
+<h3 align="center">Run .EXE</h3>
+
+<p align="center">
+  <img src="https://github.com/tiagorlampert/sAINT/blob/master/content/3.gif">
+</p>
+
+<h3 align="center">or Run .JAR</h3>
+
+<p align="center">
+  <img src="https://github.com/tiagorlampert/sAINT/blob/master/content/4.gif">
+</p>
+
+
+<h2 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h2><h3 align="center">Local</h3>
+
+<p align="center">
+  <img src="https://github.com/tiagorlampert/sAINT/blob/master/content/5.gif">
+</p>
+
+
+<h3 align="center"> E-mail</h3>
+
+<p align="center">
+  <img src="https://github.com/tiagorlampert/sAINT/blob/master/content/6.gif">
+</p>
+
+<h2 id="How-to-uninstall"><a href="#How-to-uninstall" class="headerlink" title="How to uninstall"></a>How to uninstall</h2><p>To uninstall run <a href="https://github.com/tiagorlampert/sAINT/blob/master/content/UNINSTALL.bat" target="_blank" rel="noopener">UNINSTALL.bat</a> with administrative permissions.</p>
+<h2 id="Contact"><a href="#Contact" class="headerlink" title="Contact"></a>Contact</h2><p>:email: <strong><a href="mailto:tiagorlampert@gmail.com">tiagorlampert@gmail.com</a></strong></p>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><blockquote>
+<p>The <a href="https://opensource.org/licenses/BSD-3-Clause" target="_blank" rel="noopener">BSD 3-Clause License</a></p>
+<p>Copyright (c) 2017, Tiago Rodrigo Lampert</p>
+<p>All rights reserved.</p>
+<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
+<ul>
+<li><p>Redistributions of source code must retain the above copyright notice, this<br>list of conditions and the following disclaimer.</p>
+</li>
+<li><p>Redistributions in binary form must reproduce the above copyright notice,<br>this list of conditions and the following disclaimer in the documentation<br>and/or other materials provided with the distribution.</p>
+</li>
+<li><p>Neither the name of the copyright holder nor the names of its<br>contributors may be used to endorse or promote products derived from<br>this software without specific prior written permission.</p>
+</li>
+</ul>
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS”<br>AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE<br>IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE<br>DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE<br>FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL<br>DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR<br>SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER<br>CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,<br>OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE<br>OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+</blockquote>
+<h1 id="Repo"><a href="#Repo" class="headerlink" title="Repo"></a><code>Repo</code></h1><blockquote>
+<p><em>github repo : <a href="https://github.com/tiagorlampert/sAINT" target="_blank" rel="noopener">https://github.com/tiagorlampert/sAINT</a></em></p>
+</blockquote>
+<h1 id="Teching-Video"><a href="#Teching-Video" class="headerlink" title="Teching Video"></a><code>Teching Video</code></h1><blockquote>
+<p><em>How to use it : <a href="https://youtu.be/9Ny4GAo5DdI" target="_blank" rel="noopener">https://youtu.be/9Ny4GAo5DdI</a></em></p>
+</blockquote>
+<h1 id="Frequent-Issues"><a href="#Frequent-Issues" class="headerlink" title="Frequent Issues"></a><code>Frequent Issues</code></h1><blockquote>
+<p><em>Email not recieve : <a href="https://github.com/tiagorlampert/sAINT/issues/22" target="_blank" rel="noopener">https://github.com/tiagorlampert/sAINT/issues/22</a></em></p>
+</blockquote>
+
+  
+  <p class="copyright"><strong>Links: <a href="http://yoursite.com/2020/06/10/s-AINT-it-s-a-Spyware-Generator-for-Windows-systems-written-in-Java/">http://yoursite.com/2020/06/10/s-AINT-it-s-a-Spyware-Generator-for-Windows-systems-written-in-Java/</a></strong></p>  
+</article>
+
+<div id="comment">
+    
+</div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="wrapper">
+        <div class="container">
+          
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
+<footer>
+    <div>
+        <p>
+            © 2022 <a href="http://yoursite.com">John Doe</a>.
+            Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>.
+            Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx" target="_blank" rel="noopener">lightx</a>.
+            
+        </p>
+    </div>
+</footer>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  </body>
+</html>

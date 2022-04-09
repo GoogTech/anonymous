@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>saycheese : grab target&#39;s webcam shots by link | Posts</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.17.1/styles/railscasts.css">
+    <link rel="stylesheet" href="/lightx.css"/>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icon512.png">
+    <meta name="theme-color" content="#ffffff"/>
+    
+  <meta name="generator" content="Hexo 4.2.1"></head>
+  <body>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js', {scope: '/'})
+            .then(function (registration) {
+              // console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(function (err) {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
+  <div id="page-container">
+    <div id="content-wrap">
+      <div class="wrapper">
+        <div class="container">
+            <nav>
+    <ul>
+      <li><a href="/">Posts</a></li>
+      <li><a href="/archives">Archives</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+
+            <article>
+  <h1>saycheese : grab target's webcam shots by link</h1>
+  <div class="contents">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#README-md"><span class="toc-text">README.md</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SayCheese-v1-2"><span class="toc-text">SayCheese v1.2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Author-https-github-com-thelinuxchoice-saycheese"><span class="toc-text">Author: https:&#x2F;&#x2F;github.com&#x2F;thelinuxchoice&#x2F;saycheese</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Twitter-https-twitter-com-linux-choice"><span class="toc-text">Twitter: https:&#x2F;&#x2F;twitter.com&#x2F;linux_choice</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#How-it-works"><span class="toc-text">How it works?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Legal-disclaimer"><span class="toc-text">Legal disclaimer:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installing-Tested-on-Kali-Linux-2020-1"><span class="toc-text">Installing (Tested on Kali Linux 2020.1):</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Donate"><span class="toc-text">Donate!</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Paypal"><span class="toc-text">Paypal:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Repo"><span class="toc-text">Repo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Teching-Video"><span class="toc-text">Teching Video</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Frequent-Issues"><span class="toc-text">Frequent Issues</span></a></li></ol>
+  </div>
+  <h1 id="README-md"><a href="#README-md" class="headerlink" title="README.md"></a><code>README.md</code></h1><h1 id="SayCheese-v1-2"><a href="#SayCheese-v1-2" class="headerlink" title="SayCheese v1.2"></a>SayCheese v1.2</h1><h2 id="Author-https-github-com-thelinuxchoice-saycheese"><a href="#Author-https-github-com-thelinuxchoice-saycheese" class="headerlink" title="Author: https://github.com/thelinuxchoice/saycheese"></a>Author: <a href="https://github.com/thelinuxchoice/saycheese" target="_blank" rel="noopener">https://github.com/thelinuxchoice/saycheese</a></h2><h2 id="Twitter-https-twitter-com-linux-choice"><a href="#Twitter-https-twitter-com-linux-choice" class="headerlink" title="Twitter: https://twitter.com/linux_choice"></a>Twitter: <a href="https://twitter.com/linux_choice" target="_blank" rel="noopener">https://twitter.com/linux_choice</a></h2><p>Take webcam shots from target just sending a malicious link</p>
+<p><img src="https://user-images.githubusercontent.com/34893261/81830116-10add880-9512-11ea-946e-3643db8c1bba.png" alt="sch"></p>
+<h1 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works?"></a>How it works?</h1><p>The tool generates a malicious HTTPS page using Ngrok Port Forwarding method, and a javascript code to perform cam requests using MediaDevices.getUserMedia. </p>
+
+<p>The MediaDevices.getUserMedia() method prompts the user for permission to use a media input which produces a MediaStream with tracks containing the requested types of media. That stream can include, for example, a video track (produced by either a hardware or virtual video source such as a camera, video recording device, screen sharing service, and so forth), an audio track (similarly, produced by a physical or virtual audio source like a microphone, A/D converter, or the like), and possibly other track types. </p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia" target="_blank" rel="noopener">See more about MediaDEvices.getUserMedia() here</a></p>
+<p> To convince the target to grant permissions to access the cam, the page uses as default template page a javascript code made by https://github.com/wybiral that turns the favicon into a cam stream.</p>
+
+<h2 id="Legal-disclaimer"><a href="#Legal-disclaimer" class="headerlink" title="Legal disclaimer:"></a>Legal disclaimer:</h2><p>Usage of SayCheese for attacking targets without prior mutual consent is illegal. It’s the end user’s responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program </p>
+<h2 id="Installing-Tested-on-Kali-Linux-2020-1"><a href="#Installing-Tested-on-Kali-Linux-2020-1" class="headerlink" title="Installing (Tested on Kali Linux 2020.1):"></a>Installing (Tested on Kali Linux 2020.1):</h2><pre><code>git clone https://github.com/thelinuxchoice/saycheese
+cd saycheese
+bash saycheese.sh</code></pre><h3 id="Donate"><a href="#Donate" class="headerlink" title="Donate!"></a>Donate!</h3><p>Pay me a coffee:</p>
+<h3 id="Paypal"><a href="#Paypal" class="headerlink" title="Paypal:"></a>Paypal:</h3><p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=CLKRT5QXXFJY4&amp;source=url" target="_blank" rel="noopener">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=CLKRT5QXXFJY4&amp;source=url</a></p>
+<h1 id="Repo"><a href="#Repo" class="headerlink" title="Repo"></a><code>Repo</code></h1><blockquote>
+<p><em>github repo : <a href="https://github.com/thelinuxchoice/saycheese" target="_blank" rel="noopener">https://github.com/thelinuxchoice/saycheese</a></em></p>
+</blockquote>
+<h1 id="Teching-Video"><a href="#Teching-Video" class="headerlink" title="Teching Video"></a><code>Teching Video</code></h1><blockquote>
+<p><em>how to use it : <a href="https://youtu.be/_VhDxHkGCjs" target="_blank" rel="noopener">https://youtu.be/_VhDxHkGCjs</a></em></p>
+</blockquote>
+<h1 id="Frequent-Issues"><a href="#Frequent-Issues" class="headerlink" title="Frequent Issues"></a><code>Frequent Issues</code></h1><blockquote>
+<p><em>can’t get or only get blank picture : <a href="https://github.com/thelinuxchoice/saycheese/issues/34" target="_blank" rel="noopener">https://github.com/thelinuxchoice/saycheese/issues/34</a></em></p>
+</blockquote>
+
+  
+  <p class="copyright"><strong>Links: <a href="http://yoursite.com/2020/06/10/saycheese-grab-target-s-webcam-shots-by-link/">http://yoursite.com/2020/06/10/saycheese-grab-target-s-webcam-shots-by-link/</a></strong></p>  
+</article>
+
+<div id="comment">
+    
+</div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="wrapper">
+        <div class="container">
+          
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
+<footer>
+    <div>
+        <p>
+            © 2022 <a href="http://yoursite.com">John Doe</a>.
+            Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>.
+            Theme <a href="https://github.com/songquanpeng/hexo-theme-lightx" target="_blank" rel="noopener">lightx</a>.
+            
+        </p>
+    </div>
+</footer>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  </body>
+</html>
